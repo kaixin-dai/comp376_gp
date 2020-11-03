@@ -9,11 +9,13 @@ public class MonsterNavigation : MonoBehaviour
     NavMeshAgent navAgent;
     [SerializeField]
     Transform target;
+    Transform tempTarget;
     // Start is called before the first frame update
     void Start()
     {
         navAgent = GetComponent<NavMeshAgent>();
         target = GameObject.Find("Player").transform;
+        tempTarget = GameObject.Find("Player").transform;
         FollowlingTarget(target.GetComponent<PlayerInteract>());
     }
 
@@ -22,9 +24,14 @@ public class MonsterNavigation : MonoBehaviour
     {
         if (target != null)
         {
-            navAgent.SetDestination(target.position);
-            FaceTarget();
-        }   
+            
+             navAgent.SetDestination(target.position);
+             FaceTarget();
+        }
+        else
+        {
+            navAgent.SetDestination(transform.position);
+        }
     }
 
     public void MoveToPoint(Vector3 point)
@@ -38,12 +45,16 @@ public class MonsterNavigation : MonoBehaviour
 
         //target = newTarget.getTransform();
     }
-    //public void StopFollowingTarget()
-    //{
-    //    navAgent.updateRotation = true;
-    //    navAgent.stoppingDistance = 0.0f;
-    //    target = null;
-    //}
+    public void StopFollowingTarget()
+    {
+        navAgent.updateRotation = true;
+        navAgent.stoppingDistance = 0.0f;
+        target = null;
+    }
+    public void resumeFollowingTarget()
+    {
+        target = tempTarget; 
+    }
     public void FaceTarget()
     {
         Vector3 direction = (target.position - transform.position).normalized;

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
@@ -8,8 +9,32 @@ public class Enemy : MonoBehaviour
     public float speed = 2.0f;
     public int hPBar = 50;
     public int goldPrize = 10;
+    public float stunTime;
+    bool isShocked = false;
+
+    public void Update()
+    {
+        if (isShocked)
+        {
+            stunTime -= Time.deltaTime;
+            if (stunTime<=0)
+            {
+                stunTime = 0;
+                isShocked = false;
+                GetComponent<MonsterNavigation>().resumeFollowingTarget();
+                //GetComponent<NavMeshAgent>().enabled = true;
+            }
+        }
+    }
 
 
+    public void ShockStun(float stunTimer)
+    {
+        isShocked = true;
+        stunTime = stunTimer;
+        //GetComponent<NavMeshAgent>().enabled = false;
+        GetComponent<MonsterNavigation>().StopFollowingTarget();
+    }
     void ReachDestination()
     {
         GameObject.Destroy(this.gameObject);
