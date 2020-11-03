@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class BuildManager : MonoBehaviour
 {
@@ -32,13 +33,13 @@ public class BuildManager : MonoBehaviour
                 bool isCollider = Physics.Raycast(ray, out hit, 1000, LayerMask.GetMask("MapCube"));
                 if (isCollider)
                 {
-                    MapCube mapCube = hit.collider.GetComponent<MapCube>();
-                    if (selectedTD != null && mapCube.turretBuilding == null)
+                    //
+                    if (selectedTD != null )//should check for avaliable 
                     {
                         //empty and ready to build
                         if (money - selectedTD.cost >= 0)
                         {
-                            mapCube.BuildTurret(selectedTD.turretPrefab);
+                            //build turret here
                             UpdateMoney(-selectedTD.cost);
                         }
                         else
@@ -48,10 +49,10 @@ public class BuildManager : MonoBehaviour
                             alarmAudio.AlarmSound();
                         }
                     }
-                    else if (mapCube.turretBuilding != null)
-                    {
-                        //TODO upgrade
-                    }
+                    //else if (mapCube.turretBuilding != null)   //here we should check if there is already a building
+                    //{
+                    //    //TODO upgrade
+                    //}
                 }
             }
         }
