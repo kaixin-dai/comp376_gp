@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2699121589930071435}
   - component: {fileID: 2699121589930071473}
   - component: {fileID: 2699121589930071472}
+  - component: {fileID: 82483014}
   m_Layer: 0
   m_Name: dummyMonster
   m_TagString: Enemy
@@ -151,3 +152,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   navAgent: {fileID: 2699121589930071473}
   target: {fileID: 0}
+--- !u!114 &82483014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2699121589930071434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1361617c3388fc439c596a01de2e729, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  hPBar: 5000
+  goldPrize: 10
+  stunTime: 0
