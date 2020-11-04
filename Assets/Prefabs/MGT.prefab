@@ -42,7 +42,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2900944750282858297}
-  m_Mesh: {fileID: 5302568919011541938, guid: 67b6772215b02eb4ea05008214dbeab4, type: 3}
+  m_Mesh: {fileID: 5302568919011541938, guid: e1d6f0dc6b4b0e243b77d0994eed3e46, type: 3}
 --- !u!23 &3693731872552746732
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -97,9 +97,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemys: []
-  attackSpeed: 1
   ammoPrefab: {fileID: 3806169336328421206, guid: 4e7b2024e6e94eb40a298600ce8d9d66,
     type: 3}
+  attackSpeed: 1
+  useLaser: 0
+  lineRenderer: {fileID: 0}
+  maxDamage: 30
+  useShock: 0
+  shockDamage: 1
+  shockStunTime: 0.2
+  shockSpeed: 2
+  shockEffect: {fileID: 0}
   firePos: {fileID: 2464837952040969293}
 --- !u!135 &9107167643745106608
 SphereCollider:
