@@ -214,7 +214,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!4 &318261565 stripped
 Transform:
@@ -295,10 +295,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4576533414707224795, guid: 8ddfe2ab283dd46f3947a2b19d0fa2d6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4576533414707224798, guid: 8ddfe2ab283dd46f3947a2b19d0fa2d6,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14.4
+      value: 11.89
       objectReference: {fileID: 0}
     - target: {fileID: 4576533414707224798, guid: 8ddfe2ab283dd46f3947a2b19d0fa2d6,
         type: 3}
@@ -691,7 +696,7 @@ PrefabInstance:
     - target: {fileID: 3716627778043767581, guid: a70d9cfdda35e469b9ef8be2c10f9bf4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3716627778043767581, guid: a70d9cfdda35e469b9ef8be2c10f9bf4,
         type: 3}

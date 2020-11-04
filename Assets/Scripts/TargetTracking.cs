@@ -27,6 +27,10 @@ public class TargetTracking : MonoBehaviour
 
     //animation booleans
     bool mRunning;
+    bool mAttacking;
+
+    float attackDelay = 1f;
+    float lastAttacked = -999f;
 
     void Start()
     {
@@ -44,6 +48,7 @@ public class TargetTracking : MonoBehaviour
             mDistance = Vector3.Distance(mTarget.position, transform.position);
             if(mDistance < mFollowRange){
                 mRunning = true;
+                mAttacking = false;
                 
                 LookAtTarget();
 
@@ -54,6 +59,8 @@ public class TargetTracking : MonoBehaviour
                 else
                 {
                     mRunning = false;
+                    mAttacking = true;
+                    DamageTarget();
                 }
 
                 SetAnimation();
@@ -62,6 +69,7 @@ public class TargetTracking : MonoBehaviour
             else
             {
                 mRunning = false;
+                mAttacking = false;
             }
 
             SetAnimation();
@@ -92,5 +100,17 @@ public class TargetTracking : MonoBehaviour
     public void SetAnimation()
     {
         mAnimator.SetBool("Run Forward", mRunning);
+        mAnimator.SetBool("Stab Attack", mAttacking);
+    }
+    private void DamageTarget()
+    {
+        if (mAttacking)
+        {
+            if (Time.time > lastAttacked + attackDelay)
+            {
+                lastAttacked = Time.time;
+                FindObjectOfType<Health>().TakeDamage(1);
+            }
+        }
     }
 }
