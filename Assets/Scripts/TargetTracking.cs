@@ -109,7 +109,7 @@ public class TargetTracking : MonoBehaviour
             if (Time.time > lastAttacked + attackDelay)
             {
                 lastAttacked = Time.time;
-                FindObjectOfType<Health>().TakeDamage(1);
+                mTarget.GetComponent<Health>().TakeDamage(1);
             }
         }
     }
