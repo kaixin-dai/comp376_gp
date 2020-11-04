@@ -1568,6 +1568,7 @@ GameObject:
   - component: {fileID: 5957228758585264959}
   - component: {fileID: 4412541677870178086}
   - component: {fileID: 5957228758585264957}
+  - component: {fileID: 1422831009}
   m_Layer: 8
   m_Name: Enemy(bug)
   m_TagString: Enemy
@@ -1629,8 +1630,24 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5957228758585264952}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.7815247, y: 7.5863857, z: 4.1002502}
-  m_Center: {x: -0.20368958, y: 3.2931929, z: 0.37705994}
+  m_Size: {x: 3.7815247, y: 2.6477852, z: 4.1002502}
+  m_Center: {x: -0.20368958, y: 0.8238926, z: 0.37705994}
+--- !u!114 &1422831009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5957228758585264952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1361617c3388fc439c596a01de2e729, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  hPBar: 50
+  goldPrize: 10
+  stunTime: 0

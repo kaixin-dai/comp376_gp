@@ -7,11 +7,14 @@ public class Enemy : MonoBehaviour
 {
     // Start is called before the first frame update
     public float speed = 2.0f;
-    public int hPBar = 50;
+    public int hPBar;
     public int goldPrize = 10;
     public float stunTime;
     bool isShocked = false;
-
+    private void Start()
+    {
+        hPBar = GetComponent<Health>().getMaxHealth();
+    }
     public void Update()
     {
         if (isShocked)
