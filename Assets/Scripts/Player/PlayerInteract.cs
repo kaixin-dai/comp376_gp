@@ -55,6 +55,9 @@ public class PlayerInteract : MonoBehaviour
     {
         Gizmos.DrawWireSphere(mInteractPoint.position, mInteractRadius);
     }
-
+    public float getInteractRadius()
+    {
+        return mInteractRadius;
+    }
 
 }
