@@ -13,14 +13,11 @@ public class PlayerResources : MonoBehaviour
         mNumOfEssences = 0;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void AddEssences(int num)
     {
+        print("player + " + num + "essence");
+
         mNumOfEssences += num;
     }
 

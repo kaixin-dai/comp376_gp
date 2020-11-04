@@ -35,7 +35,16 @@ public class PlayerInteract : MonoBehaviour
         //damage detected enemies
         foreach(Collider interactable in interactables)
         {
-            print("we can interact with the objetc");    
+
+            var objectTag = interactable.tag;
+            if(objectTag == "essence")
+            {
+                var essence = interactable.GetComponent<Essence>();
+                if(essence != null)
+                    essence.Interact();
+            }
+                   
+
         //     var interact = interactable.GetComponent<Interact>();
         //     if(interact != null)
         //         interact.interact();
@@ -47,13 +56,5 @@ public class PlayerInteract : MonoBehaviour
         Gizmos.DrawWireSphere(mInteractPoint.position, mInteractRadius);
     }
 
-    public float getInteractRadius()
-    {
-        return mInteractRadius;
-    }
 
-    public Transform getTransform()
-    {
-        return transform;
-    }
 }
