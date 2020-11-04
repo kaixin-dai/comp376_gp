@@ -61,7 +61,7 @@ public class PlayerMovement : MonoBehaviour
             mRunning = true;
 
         }
-        Vector3 direction = Vector3.ClampMagnitude(new Vector3(horizontal,0.0f,vertical), 1.0f);
+        Vector3 direction = Vector3.ClampMagnitude(transform.right * horizontal  +  transform.forward * vertical, 1.0f);
 
         mCharacterController.SimpleMove(direction * Time.deltaTime * mSpeed);
         UpdateAnimation();
