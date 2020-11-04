@@ -15,11 +15,15 @@ public class TurretDemoCamera : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        GetComponent<Camera>().transform.LookAt(dummy.position);
-        Vector3 direction = dummy.position - startPos;
-        startPos = dummy.position;
-        transform.Translate(direction, Space.World);
+    {            
+        if (dummy!=null)
+        {
+
+            GetComponent<Camera>().transform.LookAt(dummy.position);
+            Vector3 direction = dummy.position - startPos;
+            startPos = dummy.position;
+            transform.Translate(direction, Space.World);
+        }   
     }
 
 }
