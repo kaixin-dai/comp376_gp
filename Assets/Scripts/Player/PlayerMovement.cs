@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     float mTurningSpeed;
 
+
     [SerializeField]
     [Range(-5.0f, 5.0f)]
     float mCameraOffset = 0.0f;
@@ -20,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
 
     Animator mAnimator;
     CharacterController mCharacterController;
+
     Camera mCamera;
 
     
@@ -28,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     {
         mAnimator = GetComponentInChildren<Animator>();
         mCharacterController = GetComponent<CharacterController>();
+
         mCamera = Camera.main;
 
         mCameraHeight = mCamera.transform.position.y - transform.position.y + mCameraOffset;
@@ -35,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+
 
     {
 
@@ -61,11 +65,13 @@ public class PlayerMovement : MonoBehaviour
             mRunning = true;
 
         }
+
         Vector3 direction = Vector3.ClampMagnitude(transform.right * horizontal  +  transform.forward * vertical, 1.0f);
 
         mCharacterController.SimpleMove(direction * Time.deltaTime * mSpeed);
         UpdateAnimation();
         
+
 
     }
 

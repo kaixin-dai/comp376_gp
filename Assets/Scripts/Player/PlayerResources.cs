@@ -13,9 +13,11 @@ public class PlayerResources : MonoBehaviour
         mNumOfEssences = 0;
     }
 
+
     public void AddEssences(int num)
     {
         print("player + " + num + "essence");
+
         mNumOfEssences += num;
     }
 
