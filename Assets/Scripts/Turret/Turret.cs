@@ -42,7 +42,7 @@ public class Turret : MonoBehaviour
     [Header("Use Shock")]
     public bool useShock = false;
     public int shockDamage = 1;
-    public float shockStunTime = 0.2f;
+    public float shockStunTime = 0.3f;
     public float shockSpeed = 2f;
     public GameObject shockEffect;
 

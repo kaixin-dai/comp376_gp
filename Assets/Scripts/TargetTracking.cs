@@ -8,6 +8,7 @@ public class TargetTracking : MonoBehaviour
 
     [SerializeField]
     Transform mTarget;
+    Transform tempTarget;
     [SerializeField]
     float mFollowSpeed;
     [SerializeField]
@@ -41,7 +42,8 @@ public class TargetTracking : MonoBehaviour
         mAnimator = GetComponentInChildren<Animator>();
         mAnimating = true;
         mAnimator.enabled = mAnimating;
-
+        mTarget = GameObject.Find("Player").transform;
+        tempTarget = mTarget;
     }
 
     void Update ()
@@ -86,28 +88,20 @@ public class TargetTracking : MonoBehaviour
 
         if (isStun)
         {
-            stunTimer -= Time.deltaTime;
-            if (stunTimer<=0)
-            {
-                isStun = false;
-                StunResume();
-                stunTimer = 0;
-            }
-            else
-            {
-                StunStop();
-            }
+            StunStop();
+        }
+        else
+        {
+            StunResume();
         }
     }
 
     public void SetTarget(Transform target)
     {
         mTarget = target;
+        tempTarget = target;
     }
-    public void SetStunTime(float stunTime)
-    {
-        stunTimer = stunTime;
-    }
+    
     private void LookAtTarget()
     {
         Quaternion desiredRotation = Quaternion.LookRotation(mTarget.position - transform.position);
@@ -122,18 +116,24 @@ public class TargetTracking : MonoBehaviour
     }
     public void StunStop()
     {
+        mTarget = null;
         mAnimating = false;
 
     }
     public void StunResume()
     {
-        mAnimating = true;
+        mTarget = tempTarget;
+        mAnimating = true; 
     }
     public void SetStun(bool inputBool)
     {
         isStun = inputBool;
     }
 
+    //public void SetStunTime(float stunTime)
+    //{
+    //    stunTimer = stunTime;
+    //}
     public void SetAnimation()
     {
         mAnimator.SetBool("Run Forward", mRunning);

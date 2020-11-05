@@ -48,7 +48,7 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            GetComponent<TargetTracking>().SetStun(isShocked);
+            GetComponent<TargetTracking>().SetStun(isShocked);  
         }
 
     }
