@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour
             stunTime -= Time.deltaTime;
             if (stunTime<=0)
             {
-                stunTime = 0;
+                //stunTime = 0;
                 isShocked = false;
                 if(!isBug)
                     GetComponent<MonsterNavigation>().resumeFollowingTarget();

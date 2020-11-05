@@ -48,9 +48,6 @@ public class TargetTracking : MonoBehaviour
 
     void Update ()
     {
-
-        
-
         if(mTarget != null)
         {   
             mDistance = Vector3.Distance(mTarget.position, transform.position);
@@ -82,17 +79,18 @@ public class TargetTracking : MonoBehaviour
 
             SetAnimation();
             
-            mAnimator.enabled = mAnimating;
+            //mAnimator.enabled = mAnimating;
 
         }
-
         if (isStun)
         {
             StunStop();
+            mAnimator.enabled = mAnimating;
         }
         else
         {
             StunResume();
+            mAnimator.enabled = mAnimating;
         }
     }
 

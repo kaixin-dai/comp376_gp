@@ -396,42 +396,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e025f854729b3d546ab877e9d7d6c3ea, type: 3}
---- !u!1 &655013412 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3716627778043767579, guid: a70d9cfdda35e469b9ef8be2c10f9bf4,
-    type: 3}
-  m_PrefabInstance: {fileID: 1372439550}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &655013413
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 655013412}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1361617c3388fc439c596a01de2e729, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 2
-  hPBar: 50
-  goldPrize: 10
-  stunTime: 0
-  isBug: 1
---- !u!114 &655013417
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 655013412}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b38e3165e47174f2ba6df1854822ddb2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mMaxHealth: 50
 --- !u!198 &689111264 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 4412528252881646337, guid: 8ddfe2ab283dd46f3947a2b19d0fa2d6,
