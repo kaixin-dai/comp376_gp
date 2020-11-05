@@ -35,7 +35,6 @@ public class TargetTracking : MonoBehaviour
     void Start()
     {
         mAnimator = GetComponentInChildren<Animator>();
-        mTarget = GameObject.Find("Player").transform;
 
     }
 
