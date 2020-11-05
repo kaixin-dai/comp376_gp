@@ -23,19 +23,6 @@ public class PlayerMovement : MonoBehaviour
     CharacterController mCharacterController;
 
     Camera mCamera;
-    
-    public float mGravity = -9.8f;
-    Vector3 mVelocity;
-
-    [SerializeField]
-    Transform mGroundCheck;
-
-    public float mGoundDistance = 0.1f;
-
-    [SerializeField]
-    LayerMask mGroundMask;
-
-    bool mIsGrounded;
 
     
     // Start is called before the first frame update
@@ -54,13 +41,6 @@ public class PlayerMovement : MonoBehaviour
 
 
     {
-
-        mIsGrounded = Physics.CheckSphere(mGroundCheck.position, mGoundDistance, mGroundMask);
-
-        if(mIsGrounded && mVelocity.y<0)
-        {
-            mVelocity.y = -2f;
-        }
 
 
         Vector2 mousePos = Input.mousePosition;
@@ -88,12 +68,8 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 direction = Vector3.ClampMagnitude(transform.right * horizontal  +  transform.forward * vertical, 1.0f);
 
-        mCharacterController.Move(direction * Time.deltaTime * mSpeed);
+        mCharacterController.SimpleMove(direction * Time.deltaTime * mSpeed);
         UpdateAnimation();
-
-        mVelocity.y += mGravity * Time.deltaTime;
-
-        mCharacterController.Move(mVelocity * Time.deltaTime);
         
 
 
