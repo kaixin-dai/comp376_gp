@@ -8,6 +8,7 @@ public class TargetTracking : MonoBehaviour
 
     [SerializeField]
     Transform mTarget;
+    Transform tempTarget;
     [SerializeField]
     float mFollowSpeed;
     [SerializeField]
@@ -28,6 +29,8 @@ public class TargetTracking : MonoBehaviour
     //animation booleans
     bool mRunning;
     bool mAttacking;
+    bool mAnimating;
+    bool isStun;
 
     float attackDelay = 1f;
     float lastAttacked = -999f;
@@ -36,14 +39,14 @@ public class TargetTracking : MonoBehaviour
     {
         mAnimator = GetComponentInChildren<Animator>();
         mTarget = GameObject.Find("Player").transform;
-
+        tempTarget = mTarget;
+        mAnimating = true;
+        mAnimator.enabled = mAnimating;
+        
     }
 
     void Update ()
     {
-
-        
-
         if(mTarget != null)
         {   
             mDistance = Vector3.Distance(mTarget.position, transform.position);
@@ -74,15 +77,23 @@ public class TargetTracking : MonoBehaviour
             }
 
             SetAnimation();
-
-
-  
+        }
+        if (isStun)
+        {
+            StunStop();
+            mAnimator.enabled = mAnimating;
+        }
+        else
+        {
+            StunResume();
+            mAnimator.enabled = mAnimating;
         }
     }
 
     public void SetTarget(Transform target)
     {
         mTarget = target;
+        tempTarget = target;
     }
 
     private void LookAtTarget()
@@ -97,7 +108,7 @@ public class TargetTracking : MonoBehaviour
         direction = Vector3.ClampMagnitude(direction, 1.0f);
         transform.Translate(direction * mFollowSpeed * Time.deltaTime, Space.World);
     }
-
+    
     public void SetAnimation()
     {
         mAnimator.SetBool("Run Forward", mRunning);
@@ -113,5 +124,20 @@ public class TargetTracking : MonoBehaviour
                 mTarget.GetComponent<Health>().TakeDamage(1);
             }
         }
+    }
+    public void StunStop()
+    {
+        mTarget = null;
+        mAnimating = false;
+
+    }
+    public void StunResume()
+    {
+        mTarget = tempTarget;
+        mAnimating = true;
+    }
+    public void SetStun(bool inputBool)
+    {
+        isStun = inputBool;
     }
 }
