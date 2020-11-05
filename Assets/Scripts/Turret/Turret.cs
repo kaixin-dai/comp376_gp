@@ -14,17 +14,7 @@ public class Turret : MonoBehaviour
             enemys.Add(col.gameObject);
         }
     }
-    private void OnTriggerStay(Collider col)
-    {
-        if (col.tag == "Enemy")
-        {
-            if (!enemys.Contains(col.gameObject))
-            {
-                enemys.Add(col.gameObject);
-            }
-            
-        }
-    }
+
     void OnTriggerExit(Collider col)
     {
         if (col.tag == "Enemy")
