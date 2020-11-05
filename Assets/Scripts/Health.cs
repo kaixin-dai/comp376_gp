@@ -42,4 +42,9 @@ public class Health : MonoBehaviour
         mCurrentHealth = mMaxHealth;
     }
 
+    public int getMaxhealth()
+    {
+        return mMaxHealth;
+    }
+    
 }

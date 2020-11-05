@@ -29,6 +29,9 @@ public class TargetTracking : MonoBehaviour
     bool mRunning;
     bool mAttacking;
     bool mAnimating;
+    bool isStun;
+
+    float stunTimer;
 
     float attackDelay = 1f;
     float lastAttacked = -999f;
@@ -80,13 +83,31 @@ public class TargetTracking : MonoBehaviour
             mAnimator.enabled = mAnimating;
 
         }
+
+        if (isStun)
+        {
+            stunTimer -= Time.deltaTime;
+            if (stunTimer<=0)
+            {
+                isStun = false;
+                StunResume();
+                stunTimer = 0;
+            }
+            else
+            {
+                StunStop();
+            }
+        }
     }
 
     public void SetTarget(Transform target)
     {
         mTarget = target;
     }
-
+    public void SetStunTime(float stunTime)
+    {
+        stunTimer = stunTime;
+    }
     private void LookAtTarget()
     {
         Quaternion desiredRotation = Quaternion.LookRotation(mTarget.position - transform.position);
@@ -98,6 +119,19 @@ public class TargetTracking : MonoBehaviour
         Vector3 direction = mTarget.position - transform.position;
         direction = Vector3.ClampMagnitude(direction, 1.0f);
         transform.Translate(direction * mFollowSpeed * Time.deltaTime, Space.World);
+    }
+    public void StunStop()
+    {
+        mAnimating = false;
+
+    }
+    public void StunResume()
+    {
+        mAnimating = true;
+    }
+    public void SetStun(bool inputBool)
+    {
+        isStun = inputBool;
     }
 
     public void SetAnimation()
