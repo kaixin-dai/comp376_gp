@@ -1606,7 +1606,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mTarget: {fileID: 0}
   mFollowSpeed: 3
-  mFollowRange: 20
+  mFollowRange: 100
   mRotateSmoothness: 3
   mDistance: 0
   mOffsetDistance: 3
