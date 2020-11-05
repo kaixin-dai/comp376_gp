@@ -28,6 +28,7 @@ public class TargetTracking : MonoBehaviour
     //animation booleans
     bool mRunning;
     bool mAttacking;
+    bool mAnimating;
 
     float attackDelay = 1f;
     float lastAttacked = -999f;
@@ -35,6 +36,8 @@ public class TargetTracking : MonoBehaviour
     void Start()
     {
         mAnimator = GetComponentInChildren<Animator>();
+        mAnimating = true;
+        mAnimator.enabled = mAnimating;
 
     }
 
@@ -73,9 +76,9 @@ public class TargetTracking : MonoBehaviour
             }
 
             SetAnimation();
+            
+            mAnimator.enabled = mAnimating;
 
-
-  
         }
     }
 
@@ -109,7 +112,8 @@ public class TargetTracking : MonoBehaviour
             if (Time.time > lastAttacked + attackDelay)
             {
                 lastAttacked = Time.time;
-                FindObjectOfType<Health>().TakeDamage(1);
+                mTarget.GetComponent<Health>().TakeDamage(1);
+
             }
         }
     }
