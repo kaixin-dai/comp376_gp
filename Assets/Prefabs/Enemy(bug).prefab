@@ -1622,7 +1622,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b38e3165e47174f2ba6df1854822ddb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMaxHealth: 2
+  mMaxHealth: 50
 --- !u!65 &5957228758585264957
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1652,6 +1652,7 @@ MonoBehaviour:
   hPBar: 50
   goldPrize: 10
   stunTime: 0
+  isBug: 1
 --- !u!54 &1422831010
 Rigidbody:
   m_ObjectHideFlags: 0
