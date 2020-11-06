@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     float mTurningSpeed;
 
+
     [SerializeField]
     [Range(-5.0f, 5.0f)]
     float mCameraOffset = 0.0f;
@@ -20,7 +21,21 @@ public class PlayerMovement : MonoBehaviour
 
     Animator mAnimator;
     CharacterController mCharacterController;
+
     Camera mCamera;
+    
+    public float mGravity = -9.8f;
+    Vector3 mVelocity;
+
+    [SerializeField]
+    Transform mGroundCheck;
+
+    public float mGoundDistance = 0.1f;
+
+    [SerializeField]
+    LayerMask mGroundMask;
+
+    bool mIsGrounded;
 
     
     // Start is called before the first frame update
@@ -28,6 +43,7 @@ public class PlayerMovement : MonoBehaviour
     {
         mAnimator = GetComponentInChildren<Animator>();
         mCharacterController = GetComponent<CharacterController>();
+
         mCamera = Camera.main;
 
         mCameraHeight = mCamera.transform.position.y - transform.position.y + mCameraOffset;
@@ -36,7 +52,15 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
 
+
     {
+
+        mIsGrounded = Physics.CheckSphere(mGroundCheck.position, mGoundDistance, mGroundMask);
+
+        if(mIsGrounded && mVelocity.y<0)
+        {
+            mVelocity.y = -2f;
+        }
 
 
         Vector2 mousePos = Input.mousePosition;
@@ -61,11 +85,17 @@ public class PlayerMovement : MonoBehaviour
             mRunning = true;
 
         }
-        Vector3 direction = Vector3.ClampMagnitude(new Vector3(horizontal,0.0f,vertical), 1.0f);
 
-        mCharacterController.SimpleMove(direction * Time.deltaTime * mSpeed);
+        Vector3 direction = Vector3.ClampMagnitude(transform.right * horizontal  +  transform.forward * vertical, 1.0f);
+
+        mCharacterController.Move(direction * Time.deltaTime * mSpeed);
         UpdateAnimation();
+
+        mVelocity.y += mGravity * Time.deltaTime;
+
+        mCharacterController.Move(mVelocity * Time.deltaTime);
         
+
 
     }
 
