@@ -11,6 +11,12 @@ public class Essence : MonoBehaviour
     [SerializeField]
     GameObject mPlayer;
 
+    void Start()
+    {
+        mPlayer = GameObject.Find("Player");
+
+    }
+
 
     public void Interact()
     {

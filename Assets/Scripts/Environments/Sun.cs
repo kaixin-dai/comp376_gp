@@ -6,7 +6,7 @@ public class Sun : MonoBehaviour
 {
 
     [SerializeField]
-    float nMinsPerLevel;
+    float nMinsPerDay;
     float nTotalSeconds;
 
     float nStart;
@@ -32,7 +32,7 @@ public class Sun : MonoBehaviour
         nStart = 25.0f;
         nEnd = 155.0f;
         nYOffset = -30f; 
-        nTotalSeconds = nMinsPerLevel * 60.0f;
+        nTotalSeconds = nMinsPerDay * 60.0f;
         nNightRotation = new Vector3(90.0f,-30.0f,0.0f);
         nCurrentX = nStart;
         day = true;
