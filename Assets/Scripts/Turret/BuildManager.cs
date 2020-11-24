@@ -6,9 +6,10 @@ using UnityEngine.EventSystems;
 
 public class BuildManager : MonoBehaviour
 {
-    public TurretData GreenTurretData;
-    public TurretData TorbTurretData;
-    public TurretData lavaTurretData;
+    public TurretData gunnerTurretData;
+    public TurretData rocketTurretData;
+    public TurretData laserTurretData;
+    public TurretData shockturretData;
 
     private int money = 1000;//small game or we need a datafile
     public Text moneyText;
@@ -57,26 +58,33 @@ public class BuildManager : MonoBehaviour
             }
         }
     }
-    public void onGreenTurretSelected(bool isOn)
+    public void onGunnerTurretSelected(bool isOn)
     {
         if (isOn)
         {
-            selectedTD = GreenTurretData;
+            selectedTD = gunnerTurretData;
         }
     }
-    public void onTorbTurretSelected(bool isOn)
+    public void onRocketTurretSelected(bool isOn)
     {
         if (isOn)
         {
-            selectedTD = TorbTurretData;
+            selectedTD = rocketTurretData;
         }
 
     }
-    public void onLavaTurretSelected(bool isOn)
+    public void onLaserTurretSelected(bool isOn)
     {
         if (isOn)
         {
-            selectedTD = lavaTurretData;
+            selectedTD = laserTurretData;
+        }
+    }
+    public void onShockTurretSelected(bool isOn)
+    {
+        if (isOn)
+        {
+            selectedTD = shockturretData;
         }
     }
 }

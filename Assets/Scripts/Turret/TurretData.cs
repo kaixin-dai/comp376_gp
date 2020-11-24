@@ -12,9 +12,9 @@ public class TurretData
     public TurretType type;
     public enum TurretType
     {
-        LMGTurret,
-        MissleTurret,
-        LavaTurret,
+        GunnerTurret,
+        RocketTurret,
+        LaserTurret,
         ShockTurret
     }
 }
