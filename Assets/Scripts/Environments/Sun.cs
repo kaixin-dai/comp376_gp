@@ -36,6 +36,9 @@ public class Sun : MonoBehaviour
         nNightRotation = new Vector3(90.0f,-30.0f,0.0f);
         nCurrentX = nStart;
         day = true;
+
+        GameManager.OnDay += StartDay;
+
     }
 
     void Update()
@@ -53,6 +56,7 @@ public class Sun : MonoBehaviour
                 nCurrentX = nStart;
                 light.intensity = nNightIntensity;
                 transform.rotation = Quaternion.Euler(nNightRotation);
+                GameManager.OnNight();
             }
             else
             {
@@ -66,7 +70,7 @@ public class Sun : MonoBehaviour
 
         else
         {
-            StartDay(); //delete this light to enable  night mode
+            
         }
 
 

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - essence
+  - night
   layers:
   - Default
   - TransparentFX

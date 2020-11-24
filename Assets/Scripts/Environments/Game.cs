@@ -13,8 +13,10 @@ public class Game : MonoBehaviour
     float time = 0.0f;
     void Start()
     {
+    
         monsterSpawner = GameObject.Find("MonsterSpawner");
         teleport = GameObject.Find("Teleport");
+
     }
 
     // Update is called once per frame
@@ -36,5 +38,16 @@ public class Game : MonoBehaviour
         {
             teleport.GetComponent<Teleport>().ToBase();
         }
+
+        if(Input.GetKeyDown(KeyCode.F))
+        {
+            GameManager.OnDay();
+        }
+        if(Input.GetKeyDown(KeyCode.G))
+        {
+            GameManager.OnNight();
+        }
     }
+
+
 }
