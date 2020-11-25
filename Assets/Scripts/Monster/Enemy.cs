@@ -12,9 +12,12 @@ public class Enemy : MonoBehaviour
     public float stunTime;
     bool isShocked = false;
     public bool isBug;
+
+   //Animator mAnimator;
     private void Start()
     {
         hPBar = GetComponent<Health>().getMaxHealth();
+        //mAnimator = GetComponentInChildren<Animator>();
     }
     public void Update()
     {
@@ -61,6 +64,8 @@ public class Enemy : MonoBehaviour
         hPBar -= damage;
         if (hPBar <= 0)
         {
+            //mAnimator.SetTrigger("Die");
+            //Invoke("ReachDestination", 5.0f);
             ReachDestination();
         }
     }

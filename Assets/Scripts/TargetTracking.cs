@@ -56,7 +56,9 @@ public class TargetTracking : MonoBehaviour
 
     void Update ()
     {
-        if(mTarget != null)
+        int currentHealth = this.GetComponent<Health>().getCurrentHealth();
+
+        if (mTarget != null && currentHealth > 0)
         {   
             mDistance = Vector3.Distance(mTarget.position, transform.position);
             if(mDistance < mFollowRange){

@@ -8,10 +8,18 @@ public class Health : MonoBehaviour
     int mMaxHealth;
 
     int mCurrentHealth;
+
+    Animator mAnimator;
     // Start is called before the first frame update
 
     void Start(){
         mCurrentHealth = mMaxHealth;
+
+        if (gameObject.CompareTag("Enemy"))
+        {
+            mAnimator = GetComponentInChildren<Animator>();
+        }
+
     }
 
     public void TakeDamage(int damage){
@@ -20,7 +28,13 @@ public class Health : MonoBehaviour
 
         if(mCurrentHealth <= 0)
         {
-            Die();
+            if (gameObject.CompareTag("Enemy"))
+            {
+                mAnimator.SetTrigger("Die");
+                Invoke("Die", 1.0f);
+            }
+            else
+                Die();
         }
     }
 
@@ -49,5 +63,10 @@ public class Health : MonoBehaviour
     public int getMaxHealth()
     {
         return mMaxHealth;
+    }
+
+    public int getCurrentHealth()
+    {
+        return mCurrentHealth;
     }
 }
