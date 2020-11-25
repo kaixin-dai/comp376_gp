@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     public static Del OnPickUpEssence;
     public static Del OnTakeDamage;
 
-    public static int dayCounter;
+    public static int dayCounter = 1;
 
     public GameObject GameOverPanel;
 
@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         GameManager.OnStartGame();
-        GameManager.OnDay();
+        // GameManager.OnDay();
     }
 
     // Update is called once per frame
