@@ -25,14 +25,16 @@ public class PromptUI : MonoBehaviour
         DamageAnimator = this.transform.Find("Damage Prompt").GetComponent<Animator>();
         DayAnimator = this.transform.Find("Day Prompt").GetComponent<Animator>();
         NightAnimator = this.transform.Find("Night Prompt").GetComponent<Animator>();
-    }
-    void Start()
-    {
+        
         GameManager.OnPickUpEssence += PickUpEssenceMessage;
         GameManager.OnTakeDamage += GetDamageMessage;
         GameManager.OnDay += DayMessage;
         GameManager.OnNight += NightMessage;
         GameManager.OnShipDestoryed += GameOverMessage;
+    }
+    void Start()
+    {
+
     }
 
     // Update is called once per frame
