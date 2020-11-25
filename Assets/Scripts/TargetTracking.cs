@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TargetTracking : MonoBehaviour
 {
@@ -20,11 +21,16 @@ public class TargetTracking : MonoBehaviour
     [SerializeField]
     float mDistance;
 
+    [SerializeField]
+    int mDamage = 1;
     //distance where the monster is close enough to attack the player
     [SerializeField]
     float mOffsetDistance = 3.0f;
 
     Animator mAnimator;
+
+    GameObject DamagePrompt;
+    Text DamagePromptText;
 
     //animation booleans
     bool mRunning;
@@ -42,6 +48,9 @@ public class TargetTracking : MonoBehaviour
         tempTarget = mTarget;
         mAnimating = true;
         mAnimator.enabled = mAnimating;
+
+        DamagePrompt = GameObject.Find("Damage Prompt");
+        DamagePromptText = DamagePrompt.GetComponent<Text>();
         
     }
 
@@ -118,10 +127,15 @@ public class TargetTracking : MonoBehaviour
     {
         if (mAttacking)
         {
+            if(mTarget.name == "Player")
+            {
+                DamagePromptText.text = " - " + mDamage;
+                GameManager.OnTakeDamage();
+            }
             if (Time.time > lastAttacked + attackDelay)
             {
                 lastAttacked = Time.time;
-                mTarget.GetComponent<Health>().TakeDamage(1);
+                mTarget.GetComponent<Health>().TakeDamage(mDamage);
             }
         }
     }

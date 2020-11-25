@@ -20,11 +20,17 @@ public class Health : MonoBehaviour
 
         if(mCurrentHealth <= 0)
         {
-            Die();
+
+                Die();
+
+
         }
     }
 
     private void Die(){
+        if(name == "Player"){
+                GameManager.OnPlayerDied();
+        }
         Destroy(gameObject);
     }
 
