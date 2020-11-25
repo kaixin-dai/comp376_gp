@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class TargetTracking : MonoBehaviour
 {
-    // Start is called before the first frame update
-
     [SerializeField]
     Transform mTarget;
+    Transform tempTarget;
     [SerializeField]
     float mFollowSpeed;
     [SerializeField]
     float mFollowRange;
+    [SerializeField]
+    bool meleeEnemy;
 
     [SerializeField]
     float mRotateSmoothness;
@@ -28,24 +29,33 @@ public class TargetTracking : MonoBehaviour
     //animation booleans
     bool mRunning;
     bool mAttacking;
+    bool mRangeAttacking;
     bool mAnimating;
+    bool isStun;
 
     float attackDelay = 1f;
     float lastAttacked = -999f;
 
+    public GameObject projectile;
+    public float shootForce;
+    public Transform attackPoint;
+
     void Start()
     {
         mAnimator = GetComponentInChildren<Animator>();
+        mTarget = GameObject.Find("Player").transform;
+        tempTarget = mTarget;
         mAnimating = true;
         mAnimator.enabled = mAnimating;
-
+        if (!meleeEnemy)
+        {
+            mOffsetDistance = 20.0f;
+        }
+        
     }
 
     void Update ()
     {
-
-        
-
         if(mTarget != null)
         {   
             mDistance = Vector3.Distance(mTarget.position, transform.position);
@@ -62,7 +72,14 @@ public class TargetTracking : MonoBehaviour
                 else
                 {
                     mRunning = false;
-                    mAttacking = true;
+                    if (meleeEnemy)
+                    {
+                       mAttacking = true;
+                    }
+                    if (!meleeEnemy)
+                    {
+                        mRangeAttacking = true;
+                    }
                     DamageTarget();
                 }
 
@@ -73,18 +90,27 @@ public class TargetTracking : MonoBehaviour
             {
                 mRunning = false;
                 mAttacking = false;
+                mRangeAttacking = false;
             }
 
             SetAnimation();
-            
+        }
+        if (isStun)
+        {
+            StunStop();
             mAnimator.enabled = mAnimating;
-
+        }
+        else
+        {
+            StunResume();
+            mAnimator.enabled = mAnimating;
         }
     }
 
     public void SetTarget(Transform target)
     {
         mTarget = target;
+        tempTarget = target;
     }
 
     private void LookAtTarget()
@@ -99,11 +125,12 @@ public class TargetTracking : MonoBehaviour
         direction = Vector3.ClampMagnitude(direction, 1.0f);
         transform.Translate(direction * mFollowSpeed * Time.deltaTime, Space.World);
     }
-
+    
     public void SetAnimation()
     {
         mAnimator.SetBool("Run Forward", mRunning);
         mAnimator.SetBool("Stab Attack", mAttacking);
+        mAnimator.SetBool("Cast Spell", mRangeAttacking);
     }
     private void DamageTarget()
     {
@@ -113,8 +140,38 @@ public class TargetTracking : MonoBehaviour
             {
                 lastAttacked = Time.time;
                 mTarget.GetComponent<Health>().TakeDamage(1);
+            }
+        }
+
+        if (mRangeAttacking)
+        {
+            if (Time.time > lastAttacked + attackDelay)
+            {
+                Vector3 direction = mTarget.position - transform.position;
+
+                lastAttacked = Time.time;
+                //instantiate bullet
+                GameObject currentBullet = Instantiate(projectile, attackPoint.position, Quaternion.identity);
+                currentBullet.transform.forward = direction.normalized;
+
+                currentBullet.GetComponent<Rigidbody>().AddForce(direction.normalized * shootForce, ForceMode.Impulse);
 
             }
         }
+    }
+    public void StunStop()
+    {
+        mTarget = null;
+        mAnimating = false;
+
+    }
+    public void StunResume()
+    {
+        mTarget = tempTarget;
+        mAnimating = true;
+    }
+    public void SetStun(bool inputBool)
+    {
+        isStun = inputBool;
     }
 }

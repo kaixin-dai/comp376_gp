@@ -21,7 +21,7 @@ public class Gun : MonoBehaviour
 
     [SerializeField]
     [Range(8, 32)]
-    int mEnemyLayer;
+    int mEnemyLayer = 8;
 
 
 
@@ -70,7 +70,12 @@ public class Gun : MonoBehaviour
             var health = hit.collider.GetComponent<Health>();
 
 			if (health != null)
-				health.TakeDamage(mDamage);
+            {
+                health.TakeDamage(mDamage);
+            }
+
+
+				
 
         }
     }

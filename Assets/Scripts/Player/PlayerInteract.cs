@@ -14,9 +14,20 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField]
     LayerMask mInteractableLayer;
 
+    [SerializeField]
+    bool mFlashlightOn = false;
+
+    [SerializeField]
+    public GameObject mLightSource;
+
+
+
 
     // Start is called before the first frame update
-
+    void Start()
+    {
+        mLightSource.SetActive(false);
+    }
 
     // Update is called once per frame
     void Update()
@@ -24,6 +35,20 @@ public class PlayerInteract : MonoBehaviour
         if(Input.GetButton("Fire2"))
         {
             Interact();
+        }
+
+        if(Input.GetKeyDown(KeyCode.F))
+        {
+            if(mFlashlightOn == false)
+            {
+                mLightSource.SetActive(true);
+                mFlashlightOn = true;
+            }
+            else
+            {
+                mLightSource.SetActive(false);
+                mFlashlightOn = false;
+            }
         }
     }
 

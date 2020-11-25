@@ -7,11 +7,15 @@ public class Enemy : MonoBehaviour
 {
     // Start is called before the first frame update
     public float speed = 2.0f;
-    public int hPBar = 50;
+    public int hPBar;
     public int goldPrize = 10;
     public float stunTime;
     bool isShocked = false;
-
+    public bool isBug;
+    private void Start()
+    {
+        hPBar = GetComponent<Health>().getMaxHealth();
+    }
     public void Update()
     {
         if (isShocked)
@@ -21,7 +25,12 @@ public class Enemy : MonoBehaviour
             {
                 stunTime = 0;
                 isShocked = false;
-                GetComponent<MonsterNavigation>().resumeFollowingTarget();
+                if (!isBug)
+                    GetComponent<MonsterNavigation>().resumeFollowingTarget();
+                else
+                {
+                    GetComponent<TargetTracking>().SetStun(isShocked);
+                }
                 //GetComponent<NavMeshAgent>().enabled = true;
             }
         }
@@ -33,7 +42,14 @@ public class Enemy : MonoBehaviour
         isShocked = true;
         stunTime = stunTimer;
         //GetComponent<NavMeshAgent>().enabled = false;
-        GetComponent<MonsterNavigation>().StopFollowingTarget();
+        if (!isBug)
+        {
+            GetComponent<MonsterNavigation>().StopFollowingTarget();
+        }
+        else
+        {
+            GetComponent<TargetTracking>().SetStun(isShocked);
+        }
     }
     void ReachDestination()
     {
