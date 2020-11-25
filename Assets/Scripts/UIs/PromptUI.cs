@@ -16,10 +16,11 @@ public class PromptUI : MonoBehaviour
     Animator DamageAnimator;
     Animator DayAnimator;
     Animator NightAnimator;
+     
     // Start is called before the first frame update
     void Awake()
     {
-        GameOverPanel = GameObject.Find("Game Over");
+        GameOverPanel = GameObject.Find("GameOver");
         EssenceAnimator = this.transform.Find("Essence Prompt").GetComponent<Animator>();
         DamageAnimator = this.transform.Find("Damage Prompt").GetComponent<Animator>();
         DayAnimator = this.transform.Find("Day Prompt").GetComponent<Animator>();
@@ -31,12 +32,22 @@ public class PromptUI : MonoBehaviour
         GameManager.OnTakeDamage += GetDamageMessage;
         GameManager.OnDay += DayMessage;
         GameManager.OnNight += NightMessage;
+        GameManager.OnShipDestoryed += GameOverMessage;
     }
 
     // Update is called once per frame
     void Update()
+
     {
-        
+
+        // Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        // RaycastHit hit;
+        // if(Physics.Raycast(ray,out hit))
+        // {   
+
+        //     print(hit.collider.name);
+
+        // }
     }
 
     public void PickUpEssenceMessage()
@@ -72,5 +83,5 @@ public class PromptUI : MonoBehaviour
         print("to Main Menu");
     }
 
-    
+
 }

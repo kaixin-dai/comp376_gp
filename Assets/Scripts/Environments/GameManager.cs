@@ -9,16 +9,22 @@ public class GameManager : MonoBehaviour
     public static Del OnStartGame;
 	public static Del OnDay;
     public static Del OnNight;
+    //no used yet
     public static Del OnShipDestoryed;
     public static Del OnPlayerDied;
+    // 
     public static Del OnPickUpEssence;
     public static Del OnTakeDamage;
 
     public static int dayCounter;
 
+    public GameObject GameOverPanel;
+
 
     void Awake()
     {  
+        GameOverPanel = GameObject.Find("GameOver");
+        GameManager.OnStartGame += GameOverPanelOff;
         GameManager.OnDay += IncreaseDayCounter;
         GameManager.OnNight += Night;
         GameManager.OnStartGame += StartGame;
@@ -59,6 +65,11 @@ public class GameManager : MonoBehaviour
     public void Reset()
     {
         dayCounter = 0;
+    }
+
+    public void GameOverPanelOff()
+    {
+        GameOverPanel.SetActive(false);
     }
 
 
