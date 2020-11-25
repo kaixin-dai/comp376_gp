@@ -14,13 +14,17 @@ public class GameManager : MonoBehaviour
     public static Del OnPickUpEssence;
     public static Del OnTakeDamage;
 
+    public static int dayCounter;
+
 
     void Awake()
-    {   
-        GameManager.OnDay += Day;
+    {  
+        GameManager.OnDay += IncreaseDayCounter;
         GameManager.OnNight += Night;
         GameManager.OnStartGame += StartGame;
         GameManager.OnPlayerDied += PlayerDied;
+        GameManager.OnShipDestoryed += Reset;
+
     }
     void Start()
     {
@@ -34,8 +38,9 @@ public class GameManager : MonoBehaviour
         
     // }
 
-    public void Day(){
-        print("day");
+    public void IncreaseDayCounter()
+    {
+        dayCounter = dayCounter + 1;
     }
 
     public void Night(){
@@ -50,6 +55,13 @@ public class GameManager : MonoBehaviour
     {
         print("PlayerDied");
     }
+
+    public void Reset()
+    {
+        dayCounter = 0;
+    }
+
+
 
 
 }
