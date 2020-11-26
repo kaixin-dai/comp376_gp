@@ -6,6 +6,7 @@ public class TurretData
 {
     // Start is called before the first frame update
     public GameObject turretPrefab;
+    public GameObject previewPrefab;
     public int cost;
     public GameObject upgradedPrefab;
     public int upgradedCost;

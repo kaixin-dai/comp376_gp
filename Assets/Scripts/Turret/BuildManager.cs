@@ -8,10 +8,13 @@ public class BuildManager : MonoBehaviour
 {
     [SerializeField]
     public TurretData gunnerTurretData, rocketTurretData, laserTurretData, shockturretData;
-
+    [SerializeField]
     private TurretData selectedTD;
+    private TurretData previewTD;
     Camera mainCam;
-
+    Ray ray;
+    RaycastHit hit;
+    GameObject previewBuild;
     private int money = 1000;//small game or we need a datafile
     public Text moneyText;
 
@@ -20,9 +23,10 @@ public class BuildManager : MonoBehaviour
     private void Start()
     {
         mainCam=Camera.main;
-        selectedTD = gunnerTurretData;
+        ray = mainCam.ScreenPointToRay(Input.mousePosition);
     }
-
+   
+    
 
     public void UpdateMoney(int changeNum = 0)
     {
@@ -32,13 +36,14 @@ public class BuildManager : MonoBehaviour
     
     void Update()
     {
+        ray = mainCam.ScreenPointToRay(Input.mousePosition);
         if (Input.GetMouseButtonDown(0))
         {
             if (EventSystem.current.IsPointerOverGameObject() == false)
             {   //building turret
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                Ray ray2 = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit;
-                bool isCollider = Physics.Raycast(ray, out hit, 1000, LayerMask.GetMask("Ground"));
+                bool isCollider = Physics.Raycast(ray2, out hit, 1000, LayerMask.GetMask("Ground"));
                 if (isCollider)
                 {
                     //
@@ -64,6 +69,38 @@ public class BuildManager : MonoBehaviour
                     //}
                 }
             }
+        }
+
+        if (selectedTD != null)
+        {
+            if (previewTD!= selectedTD)
+            {
+                previewTD = selectedTD;
+                Destroy(previewBuild);
+                if (Physics.Raycast(ray, out hit, 100, LayerMask.GetMask("Ground")))
+                {
+                    previewBuild = Instantiate(previewTD.previewPrefab, hit.point, Quaternion.identity);
+                }
+            }
+            //if (previewBuild==null)
+            //{
+            //    if (Physics.Raycast(ray, out hit, 100, LayerMask.GetMask("Ground")))
+            //    {
+            //        previewBuild = Instantiate(selectedTD.turretPrefab, hit.point, Quaternion.identity);
+            //    }
+            //}
+            else
+            {
+                if (Physics.Raycast(ray, out hit, 100, LayerMask.GetMask("Ground")))
+                {
+                    previewBuild.transform.position = hit.point;
+                }
+            }
+        }
+        else
+        {
+            Destroy(previewBuild);
+            previewBuild = null;
         }
     }
     public void onGunnerTurretSelected(bool isOn)
@@ -113,8 +150,7 @@ public class BuildManager : MonoBehaviour
     }
     public void BuildTurret(GameObject turretPrefab)
     {
-        Ray ray = mainCam.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
+        
         if (Physics.Raycast(ray, out hit, 100, LayerMask.GetMask("Ground")))
         {
             Debug.Log("we hit " + hit.collider.name + " " + hit.point);
