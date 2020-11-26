@@ -8,7 +8,6 @@ public class BuildManager : MonoBehaviour
 {
     [SerializeField]
     public TurretData gunnerTurretData, rocketTurretData, laserTurretData, shockturretData;
-    [SerializeField]
     private TurretData selectedTD;
     private TurretData previewTD;
     Camera mainCam;
@@ -42,8 +41,8 @@ public class BuildManager : MonoBehaviour
             if (EventSystem.current.IsPointerOverGameObject() == false)
             {   //building turret
                 Ray ray2 = Camera.main.ScreenPointToRay(Input.mousePosition);
-                RaycastHit hit;
-                bool isCollider = Physics.Raycast(ray2, out hit, 1000, LayerMask.GetMask("Ground"));
+                RaycastHit hit2;
+                bool isCollider = Physics.Raycast(ray2, out hit2, 1000, LayerMask.GetMask("Ground"));
                 if (isCollider)
                 {
                     //
@@ -76,10 +75,19 @@ public class BuildManager : MonoBehaviour
             if (previewTD!= selectedTD)
             {
                 previewTD = selectedTD;
-                Destroy(previewBuild);
+                if (previewBuild!=null)
+                {
+                    Destroy(previewBuild);
+                }
+                
                 if (Physics.Raycast(ray, out hit, 100, LayerMask.GetMask("Ground")))
                 {
-                    previewBuild = Instantiate(previewTD.previewPrefab, hit.point, Quaternion.identity);
+                    if (previewTD!=null)
+                    {
+                        if (previewBuild == null)
+                            previewBuild = Instantiate(previewTD.previewPrefab, hit.point, Quaternion.identity);
+                    }
+                    
                 }
             }
             //if (previewBuild==null)
@@ -93,13 +101,21 @@ public class BuildManager : MonoBehaviour
             {
                 if (Physics.Raycast(ray, out hit, 100, LayerMask.GetMask("Ground")))
                 {
-                    previewBuild.transform.position = hit.point;
+                    if (previewBuild!=null)
+                    {
+                        previewBuild.transform.position = hit.point;
+                    }
+                    
                 }
             }
         }
         else
         {
-            Destroy(previewBuild);
+            if (previewBuild!=null)
+            {
+                Destroy(previewBuild);
+            }
+            
             previewBuild = null;
         }
     }

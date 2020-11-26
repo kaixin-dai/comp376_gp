@@ -181,7 +181,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3204181631656465641}
   - component: {fileID: 2236549577533346108}
-  - component: {fileID: 2547580900004891530}
   m_Layer: 0
   m_Name: ShockTower
   m_TagString: Untagged
@@ -220,34 +219,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 20
   m_Center: {x: 0, y: 2.157133, z: 0}
---- !u!114 &2547580900004891530
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 6912990649826078764, guid: a9d83b73566c2bd4aa6aa0be3e810d44,
-    type: 3}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3185091250581310074}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c85ccd3530144a740bfd10b1740b6e1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemys: []
-  ammoPrefab: {fileID: 0}
-  attackSpeed: 1
-  useRocket: 0
-  secondFirePos: {fileID: 0}
-  useLaser: 0
-  lineRenderer: {fileID: 0}
-  maxDamage: 30
-  useShock: 1
-  shockDamage: 1
-  shockStunTime: 0.2
-  shockSpeed: 2
-  shockEffect: {fileID: 5001521858264385314, guid: 948f88d810362924c9fa2d567a04edc6,
-    type: 3}
-  firePos: {fileID: 5548883812556963488}
 --- !u!1 &4285227147487147316
 GameObject:
   m_ObjectHideFlags: 0
