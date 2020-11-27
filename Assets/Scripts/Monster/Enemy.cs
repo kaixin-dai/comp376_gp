@@ -18,6 +18,7 @@ public class Enemy : MonoBehaviour
     {
         hPBar = GetComponent<Health>().getMaxHealth();
 
+
     }
     public void Update()
     {
