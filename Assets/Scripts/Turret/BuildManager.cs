@@ -82,12 +82,7 @@ public class BuildManager : MonoBehaviour
                 
                 if (Physics.Raycast(ray, out hit, 100, LayerMask.GetMask("Ground")))
                 {
-                    if (previewTD!=null)
-                    {
-                        if (previewBuild == null)
-                            previewBuild = Instantiate(previewTD.previewPrefab, hit.point, Quaternion.identity);
-                    }
-                    
+                        previewBuild = Instantiate(previewTD.previewPrefab, hit.point, Quaternion.identity);
                 }
             }
             //if (previewBuild==null)

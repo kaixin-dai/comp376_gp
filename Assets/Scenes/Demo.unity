@@ -1111,13 +1111,6 @@ MonoBehaviour:
     upgradedPrefab: {fileID: 0}
     upgradedCost: 0
     type: 3
-  selectedTD:
-    turretPrefab: {fileID: 0}
-    previewPrefab: {fileID: 0}
-    cost: 0
-    upgradedPrefab: {fileID: 0}
-    upgradedCost: 0
-    type: 0
   moneyText: {fileID: 745319666}
   moneyAnimator: {fileID: 745319670}
   alarmAudio: {fileID: 0}
