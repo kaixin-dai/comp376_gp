@@ -10,10 +10,10 @@ public class Health : MonoBehaviour
 
     [SerializeField]
     int mCurrentHealth;
-    // Start is called before the first frame update
-    [SerializeField]
+    
     public HealthBar healthBar;
 
+    // Start is called before the first frame update
     void Start(){
         mCurrentHealth = mMaxHealth;
         healthBar.SetMaxHealth(mMaxHealth);

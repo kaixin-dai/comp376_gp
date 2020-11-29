@@ -14,7 +14,8 @@ public class BuildManager : MonoBehaviour
     Ray ray;
     RaycastHit hit;
     GameObject previewBuild;
-    private int money = 1000;//small game or we need a datafile
+    /*    private int money = 1000;//small game or we need a datafile*/
+    private int money = PlayerResources.GetEssence();
     public Text moneyText;
 
     public Animator moneyAnimator;
