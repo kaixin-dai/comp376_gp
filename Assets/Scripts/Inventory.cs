@@ -7,6 +7,7 @@ using TMPro;
 
 public class Inventory : MonoBehaviour
 {
+
     public GameObject player;
 
     public Button buildButton;
@@ -17,6 +18,27 @@ public class Inventory : MonoBehaviour
     public GameObject weaponPanel;
     public GameObject mapPanel;
 
+    // Build Panel
+    public Button gunner1;
+    public int gunner1Cost;
+    public Button gunner2;
+    public int gunner2Cost;
+    public Button gunner3;
+    public int gunner3Cost;
+
+    public Button laser1;
+    public Button laser2;
+    public Button laser3;
+
+    public Button rocket1;
+    public Button rocket2;
+    public Button rocket3;
+
+    public Button shock1;
+    public Button shock2;
+    public Button shock3;
+
+    // Weapon Panel 
     public Button melee1;
     public Button melee2;
     public Button melee3;
@@ -79,9 +101,11 @@ public class Inventory : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        /*DontDestroyOnLoad(GameObject.Find("Inventory"));*/
         buildPanel.gameObject.SetActive(true);
         weaponPanel.gameObject.SetActive(false);
         mapPanel.gameObject.SetActive(false);
+
     }
 
     // Update is called once per frame
