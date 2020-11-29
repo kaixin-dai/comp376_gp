@@ -1,0 +1,84 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &316845930571611225
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 316845930571611231}
+  - component: {fileID: 316845930571611230}
+  m_Layer: 0
+  m_Name: BuildManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &316845930571611231
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 316845930571611225}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 855.7492, y: 66.92783, z: 558.12396}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &316845930571611230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 316845930571611225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d800d0f346930664db46a085f6b23802, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gunnerTurretData:
+    turretPrefab: {fileID: 2798950161272726849, guid: c656f0ff01b7f18478523cdda9f0ce35,
+      type: 3}
+    previewPrefab: {fileID: 3326220174589675727, guid: 04851988cdbd6e046adedc11140adfb3,
+      type: 3}
+    cost: 1
+    upgradedPrefab: {fileID: 0}
+    upgradedCost: 0
+    type: 0
+  rocketTurretData:
+    turretPrefab: {fileID: 6327426258943899993, guid: a4aa2624a8deb664bbb4deb86b191edb,
+      type: 3}
+    previewPrefab: {fileID: 4820059107247680036, guid: 609c0c4b10addc446a381f6e2c079b9c,
+      type: 3}
+    cost: 2
+    upgradedPrefab: {fileID: 0}
+    upgradedCost: 0
+    type: 1
+  laserTurretData:
+    turretPrefab: {fileID: 5065551913986394404, guid: 37530f5243b333d41a65409cc407a86a,
+      type: 3}
+    previewPrefab: {fileID: 8302712340999083331, guid: 8317b458694779e448c8f1c65fd826dc,
+      type: 3}
+    cost: 2
+    upgradedPrefab: {fileID: 0}
+    upgradedCost: 0
+    type: 2
+  shockturretData:
+    turretPrefab: {fileID: 2843088918134611505, guid: 36063c68deb755a478d86dfd3291c7d2,
+      type: 3}
+    previewPrefab: {fileID: 4285227147487147316, guid: a9d83b73566c2bd4aa6aa0be3e810d44,
+      type: 3}
+    cost: 3
+    upgradedPrefab: {fileID: 0}
+    upgradedCost: 0
+    type: 3
+  moneyText: {fileID: 0}
+  moneyAnimator: {fileID: 0}
+  alarmAudio: {fileID: 0}

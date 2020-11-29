@@ -35,11 +35,17 @@ public class Turret : MonoBehaviour
 
     //how many seconds for one shot
     private float timer = 0;
-    
+
 
     [Header("Use Bullets (default)")]
     public GameObject ammoPrefab;//ammo
     public float attackSpeed = 1;
+
+    [Header("Use Rocket")]
+    public bool useRocket = false;
+    public Transform secondFirePos;
+    private Transform enemyLastPos;
+
 
     [Header("Use Laser")]
     public bool useLaser = false;
@@ -75,6 +81,9 @@ public class Turret : MonoBehaviour
         {
             shockCheck();
         }
+        else if(useRocket){
+            RocketLockShoot();
+        }
         else
         {
             DefaultLockShoot();
@@ -86,15 +95,28 @@ public class Turret : MonoBehaviour
         if (enemys.Count > 0 && timer > shockSpeed)
         {
             timer -= shockSpeed;
-            ShockEnemy();
+            if (enemys[0] !=null)
+            {
+                ShockEnemy();
+            }
+        }
+        if (enemys.Count > 0)
+        {
+            if (enemys[0] == null)
+            {
+                enemys.RemoveAt(0);
+            }
         }
     }
     public void ShockEnemy()
     {
         for (int i =0; i < enemys.Count; i++)
         {
-            enemys[i].GetComponent<Enemy>().ShockStun(shockStunTime);
-            enemys[i].GetComponent<Enemy>().takeDamage(1);
+            if (enemys[i] != null)
+            {
+                enemys[i].GetComponent<Enemy>().ShockStun(shockStunTime);
+                enemys[i].GetComponent<Enemy>().takeDamage(1);
+            }
         }
         Instantiate(shockEffect, firePos.position, transform.rotation);
     }
@@ -107,11 +129,32 @@ public class Turret : MonoBehaviour
             timer -= attackSpeed;
             if (enemys[0] == null)
             {
-                enemys.Remove(enemys[0]);
+                enemys.RemoveAt(0);
                 timer += attackSpeed;
                 return;
             }
             Attack();
+        }
+        else if (enemys.Count == 0)
+        {
+            timer = attackSpeed;
+        }
+    }
+
+    public void RocketLockShoot()
+    {
+        timer += Time.deltaTime;
+
+        if (enemys.Count > 0 && timer > attackSpeed)
+        {
+            timer -= attackSpeed;
+            if (enemys[0] == null)
+            {
+                enemys.RemoveAt(0);
+                timer += attackSpeed;
+                return;
+            }
+            RocketAttack();
         }
         else if (enemys.Count == 0)
         {
@@ -126,7 +169,7 @@ public class Turret : MonoBehaviour
 
             if (enemys[0] == null)
             {
-                enemys.Remove(enemys[0]);
+                enemys.RemoveAt(0);
                 lineRenderer.SetPosition(0, firePos.position);
                 lineRenderer.SetPosition(1, firePos.position);
                 laserTimer = 4f;
@@ -180,6 +223,18 @@ public class Turret : MonoBehaviour
         {
             GameObject bullet = GameObject.Instantiate(ammoPrefab, firePos.position, firePos.rotation);
             bullet.GetComponent<Bullet>().SetTarget(enemys[0].transform);
+        }
+        //bullet.GetComponent<Bullet>().ReachDestination();
+    }
+
+    void RocketAttack()
+    {
+        if (enemys.Count > 0)
+        {
+            GameObject bullet = GameObject.Instantiate(ammoPrefab, firePos.position, firePos.rotation);
+            GameObject bullet2 = GameObject.Instantiate(ammoPrefab, secondFirePos.position, secondFirePos.rotation);
+            bullet.GetComponent<Bullet>().SetTarget(enemys[0].transform);
+            bullet2.GetComponent<Bullet>().SetTarget(enemys[0].transform);
         }
         //bullet.GetComponent<Bullet>().ReachDestination();
     }
