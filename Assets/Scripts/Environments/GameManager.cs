@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         GameManager.OnStartGame();
-        // GameManager.OnDay();
+        GameManager.OnDay();
     }
 
     // Update is called once per frame
