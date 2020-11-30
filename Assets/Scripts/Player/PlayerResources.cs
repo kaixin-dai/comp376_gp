@@ -7,8 +7,7 @@ public class PlayerResources : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    [SerializeField]
-    public static int mNumOfEssences;
+    public static int mNumOfEssences = 1000;
 
     void Start()
     {
@@ -27,7 +26,7 @@ public class PlayerResources : MonoBehaviour
         mNumOfEssences += num;
     }
 
-    public void UseEssences(int num)
+    public static void UseEssences(int num)
     {
         mNumOfEssences -= num;
 
