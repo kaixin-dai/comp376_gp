@@ -6,8 +6,8 @@ public class enemyWaypointsMove : MonoBehaviour
 {
 
 
-    [SerializeField]
-    Transform mTarget;
+    
+    public Transform mTarget;
 
     [SerializeField]
     bool isFinished;

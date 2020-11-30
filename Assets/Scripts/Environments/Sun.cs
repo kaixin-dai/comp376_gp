@@ -25,7 +25,7 @@ public class Sun : MonoBehaviour
     [SerializeField]
     float nNightIntensity;
 
-    void Start()
+    void Awake()
     {   
         nOriginalIntensity = light.intensity;
         nTimeCounter = 0.0f;

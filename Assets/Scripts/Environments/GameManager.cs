@@ -16,20 +16,31 @@ public class GameManager : MonoBehaviour
     public static Del OnPickUpEssence;
     public static Del OnTakeDamage;
 
+    public static Del OnGameWon;
+
     public static int dayCounter = 1;
 
     public GameObject GameOverPanel;
+    public GameObject GameWonPanel;
+
+    public int WinningDay = 7;
 
 
     void Awake()
     {  
         GameOverPanel = GameObject.Find("GameOver");
+        GameWonPanel = GameObject.Find("GameWon");
         GameManager.OnStartGame += GameOverPanelOff;
+        GameManager.OnStartGame += GameWonPanelOff;
         GameManager.OnDay += IncreaseDayCounter;
         GameManager.OnNight += Night;
         GameManager.OnStartGame += StartGame;
         GameManager.OnPlayerDied += PlayerDied;
         GameManager.OnShipDestoryed += Reset;
+        GameManager.OnGameWon += Reset;
+        GameManager.OnShipDestoryed += PauseGame;
+        GameManager.OnGameWon += PauseGame;
+        
 
     }
     void Start()
@@ -38,14 +49,22 @@ public class GameManager : MonoBehaviour
         GameManager.OnDay();
     }
 
-    // Update is called once per frame
-    // void Update()
-    // {
+
+    void Update()
+    {
         
-    // }
+        if(GameManager.dayCounter == WinningDay)
+
+        {
+            print("call game won");
+            GameManager.OnGameWon();
+            // Time.timeScale = 0;
+        }
+    }
 
     public void IncreaseDayCounter()
     {
+        print("day");
         dayCounter = dayCounter + 1;
     }
 
@@ -70,6 +89,17 @@ public class GameManager : MonoBehaviour
     public void GameOverPanelOff()
     {
         GameOverPanel.SetActive(false);
+    }
+
+    public void GameWonPanelOff()
+    {
+        print("gamewon panel off");
+        GameWonPanel.SetActive(false);
+    }
+
+    public void PauseGame()
+    {
+        Time.timeScale = 0f;
     }
 
 

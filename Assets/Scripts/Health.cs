@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
@@ -8,15 +9,23 @@ public class Health : MonoBehaviour
     int mMaxHealth;
 
     int mCurrentHealth;
+    
+    GameObject DamagePrompt;
+    Text DamagePromptText;
     // Start is called before the first frame update
 
     void Start(){
         mCurrentHealth = mMaxHealth;
+
+        DamagePrompt = GameObject.Find("Damage Prompt");
+        DamagePromptText = DamagePrompt.GetComponent<Text>();
     }
 
     public void TakeDamage(int damage){
         mCurrentHealth -= damage;
         print(gameObject.name + " health:" + mCurrentHealth);
+        DamagePromptText.text = " - " + damage;
+        GameManager.OnTakeDamage();
 
         if(mCurrentHealth <= 0)
         {
@@ -29,7 +38,11 @@ public class Health : MonoBehaviour
 
     private void Die(){
         if(name == "Player"){
-                GameManager.OnPlayerDied();
+                //GameManager.OnPlayerDied();
+        }
+
+        if(name =="Ship"){
+            GameManager.OnShipDestoryed();
         }
         Destroy(gameObject);
     }

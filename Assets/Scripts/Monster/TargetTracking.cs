@@ -8,7 +8,16 @@ public class TargetTracking : MonoBehaviour
     // Start is called before the first frame update
 
     [SerializeField]
+    Transform mTargetPlayer;
+
+
+    [SerializeField]
+    Transform mTargetShip;
+
+    [SerializeField]
     Transform mTarget;
+
+
     Transform tempTarget;
     [SerializeField]
     float mFollowSpeed;
@@ -29,8 +38,8 @@ public class TargetTracking : MonoBehaviour
 
     Animator mAnimator;
 
-    GameObject DamagePrompt;
-    Text DamagePromptText;
+    // GameObject DamagePrompt;
+    // Text DamagePromptText;
 
     //animation booleans
     bool mRunning;
@@ -44,18 +53,36 @@ public class TargetTracking : MonoBehaviour
     void Start()
     {
         mAnimator = GetComponentInChildren<Animator>();
-        mTarget = GameObject.Find("Player").transform;
+
+        mTargetPlayer = GameObject.Find("Player").transform;
+        mTargetShip = GameObject.Find("Ship").transform;
+
         tempTarget = mTarget;
         mAnimating = true;
         mAnimator.enabled = mAnimating;
 
-        DamagePrompt = GameObject.Find("Damage Prompt");
-        DamagePromptText = DamagePrompt.GetComponent<Text>();
+        // DamagePrompt = GameObject.Find("Damage Prompt");
+        // DamagePromptText = DamagePrompt.GetComponent<Text>();
         
     }
 
     void Update ()
-    {
+    {   
+        float distanceToShip = Vector3.Distance(mTargetShip.position, transform.position);
+        float distanceToPlayer = Vector3.Distance(mTargetPlayer.position, transform.position);
+
+
+        if(distanceToShip > distanceToPlayer)
+        {
+            mTarget = mTargetPlayer;
+        }
+        else
+        {
+            mTarget = mTargetShip;
+        }
+
+
+
         if(mTarget != null)
         {   
             mDistance = Vector3.Distance(mTarget.position, transform.position);
@@ -127,11 +154,11 @@ public class TargetTracking : MonoBehaviour
     {
         if (mAttacking)
         {
-            if(mTarget.name == "Player")
-            {
-                DamagePromptText.text = " - " + mDamage;
-                GameManager.OnTakeDamage();
-            }
+            // if(mTarget.name == "Player")
+            // {
+            //     DamagePromptText.text = " - " + mDamage;
+            //     GameManager.OnTakeDamage();
+            // }
             if (Time.time > lastAttacked + attackDelay)
             {
                 lastAttacked = Time.time;

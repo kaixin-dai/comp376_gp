@@ -11,6 +11,7 @@ public class PromptUI : MonoBehaviour
     public Text NightPrompt;
 
     public GameObject GameOverPanel;
+    public GameObject GameWonPanel;
 
     Animator EssenceAnimator;
     Animator DamageAnimator;
@@ -21,6 +22,7 @@ public class PromptUI : MonoBehaviour
     void Awake()
     {
         GameOverPanel = GameObject.Find("GameOver");
+        GameWonPanel = GameObject.Find("GameWon");
         EssenceAnimator = this.transform.Find("Essence Prompt").GetComponent<Animator>();
         DamageAnimator = this.transform.Find("Damage Prompt").GetComponent<Animator>();
         DayAnimator = this.transform.Find("Day Prompt").GetComponent<Animator>();
@@ -31,6 +33,7 @@ public class PromptUI : MonoBehaviour
         GameManager.OnDay += DayMessage;
         GameManager.OnNight += NightMessage;
         GameManager.OnShipDestoryed += GameOverMessage;
+        GameManager.OnGameWon += GameWonMessage;
     }
     void Start()
     {
@@ -80,10 +83,17 @@ public class PromptUI : MonoBehaviour
         GameOverPanel.SetActive(true);
     }
 
+    public void GameWonMessage()
+    {
+        print("gamewon panel on");
+        GameWonPanel.SetActive(true);
+    }
+
     public void BackToMainMenu()
     {
         print("to Main Menu");
     }
+
 
 
 }
