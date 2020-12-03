@@ -33,14 +33,17 @@ public class BuildManager : MonoBehaviour
         mainCam=Camera.main;
         ray = mainCam.ScreenPointToRay(Input.mousePosition);
 
-        turretSelected = TURRETS.Gunner;
-/*        gunnerToggle.SetActive(true);
-        laserToggle.SetActive(false);
-        rocketToggle.SetActive(false);
-        shockToggle.SetActive(false);*/
+        turretSelected = TURRETS.None;
+        /*        gunnerToggle.SetActive(true);
+                laserToggle.SetActive(false);
+                rocketToggle.SetActive(false);
+                shockToggle.SetActive(false);*/
+        gunnerToggle.GetComponent<Image>().enabled = false;
+        laserToggle.GetComponent<Image>().enabled = false;
+        rocketToggle.GetComponent<Image>().enabled = false;
+        shockToggle.GetComponent<Image>().enabled = false;
     }
-   
-    
+
 
     public void UpdateMoney(int changeNum = 0)
     {
@@ -134,82 +137,79 @@ public class BuildManager : MonoBehaviour
 
         money = PlayerResources.GetEssence();
 
-        if (Input.GetKeyDown(KeyCode.Alpha1)) {
-            
-            if (turretSelected != TURRETS.None) 
+        if (Input.GetKeyDown(KeyCode.Alpha1)) {   
+            if (turretSelected == TURRETS.Gunner) 
             { 
-               /* turretSelected = false;*/
                 gunnerToggle.GetComponent<Toggle>().isOn = false;
+                turretSelected = TURRETS.None;
             }
             else 
             { 
-                /*turretSelected = true;*/
                 gunnerToggle.GetComponent<Toggle>().isOn = true;
+/*                laserToggle.GetComponent<Toggle>().isOn = false;
+                rocketToggle.GetComponent<Toggle>().isOn = false;
+                shockToggle.GetComponent<Toggle>().isOn = false;*/
                 turretSelected = TURRETS.Gunner;
-                gunnerToggle.SetActive(true);
+   /*             gunnerToggle.SetActive(true);
                 laserToggle.SetActive(false);
                 rocketToggle.SetActive(false);
-                shockToggle.SetActive(false);
+                shockToggle.SetActive(false);*/
             }
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-
-            if (turretSelected != TURRETS.None)
+            if (turretSelected == TURRETS.Laser)
             {
-                /*turretSelected = false;*/
                 laserToggle.GetComponent<Toggle>().isOn = false;
+                turretSelected = TURRETS.None;
             }
             else
             {
-                /*turretSelected = true;*/
                 laserToggle.GetComponent<Toggle>().isOn = true;
-                turretSelected = TURRETS.Gunner;
-                laserToggle.SetActive(true);
+                turretSelected = TURRETS.Laser;
+/*                laserToggle.SetActive(true);
                 gunnerToggle.SetActive(false);
                 rocketToggle.SetActive(false);
-                shockToggle.SetActive(false);
+                shockToggle.SetActive(false);*/
             }
         }
 
-        /*if (Input.GetKeyDown(KeyCode.Alpha3))
+        if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-
-            if (turretSelected == true)
+            if (turretSelected == TURRETS.Rocket)
             {
-                turretSelected = false;
                 rocketToggle.GetComponent<Toggle>().isOn = false;
+                turretSelected = TURRETS.None;
             }
             else
             {
-                turretSelected = true;
                 rocketToggle.GetComponent<Toggle>().isOn = true;
-                gunnerToggle.SetActive(false);
+/*                turretSelected = TURRETS.Rocket;
                 laserToggle.SetActive(false);
+                gunnerToggle.SetActive(false);
                 rocketToggle.SetActive(true);
-                shockToggle.SetActive(false);
+                shockToggle.SetActive(false);*/
             }
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-
-            if (turretSelected == true)
+            if (turretSelected == TURRETS.Shock)
             {
-                turretSelected = false;
                 shockToggle.GetComponent<Toggle>().isOn = false;
+                turretSelected = TURRETS.None;
             }
             else
             {
-                turretSelected = true;
                 shockToggle.GetComponent<Toggle>().isOn = true;
+                turretSelected = TURRETS.Shock;
+/*                laserToggle.SetActive(false);
                 gunnerToggle.SetActive(false);
-                laserToggle.SetActive(false);
                 rocketToggle.SetActive(false);
-                shockToggle.SetActive(true);
+                shockToggle.SetActive(true);*/
             }
-        }*/
+        }
     }
     public void onGunnerTurretSelected(bool isOn)
     {
