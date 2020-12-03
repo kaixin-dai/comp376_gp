@@ -227,7 +227,7 @@ Transform:
   - {fileID: 421986768}
   - {fileID: 1800551789}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &144264190 stripped
 GameObject:
@@ -459,7 +459,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1433761218}
         m_TargetAssemblyTypeName: BuildManager, Assembly-CSharp
         m_MethodName: onGunnerTurretSelected
         m_Mode: 0
@@ -555,7 +555,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1433761218}
         m_TargetAssemblyTypeName: BuildManager, Assembly-CSharp
         m_MethodName: onRocketTurretSelected
         m_Mode: 0
@@ -880,6 +880,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1543436083646558342, guid: 431e279fdd53f4bf9b46e2e9352098cd,
+        type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 2725831782638661884}
     - target: {fileID: 1543436083646558360, guid: 431e279fdd53f4bf9b46e2e9352098cd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1017,7 +1022,7 @@ PrefabInstance:
     - target: {fileID: 316845930571611231, guid: 951fa863adb3c4243b7abc50fa76964c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 316845930571611231, guid: 951fa863adb3c4243b7abc50fa76964c,
         type: 3}
@@ -1173,7 +1178,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1433761218}
         m_TargetAssemblyTypeName: BuildManager, Assembly-CSharp
         m_MethodName: onShockTurretSelected
         m_Mode: 0
@@ -1584,6 +1589,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1369282233}
   m_CullTransparentMesh: 0
+--- !u!114 &1433761218 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 316845930571611230, guid: 951fa863adb3c4243b7abc50fa76964c,
+    type: 3}
+  m_PrefabInstance: {fileID: 661582114}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d800d0f346930664db46a085f6b23802, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1501170891
 GameObject:
   m_ObjectHideFlags: 0
@@ -1667,7 +1684,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1433761218}
         m_TargetAssemblyTypeName: BuildManager, Assembly-CSharp
         m_MethodName: onLaserTurretSelected
         m_Mode: 0
@@ -2477,7 +2494,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 282, y: -461}
+  m_AnchoredPosition: {x: 253.81, y: -458}
   m_SizeDelta: {x: 74.81201, y: 28.63655}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2725831781182764101

@@ -47,7 +47,6 @@ public class BuildManager : MonoBehaviour
 
     public void UpdateMoney(int changeNum = 0)
     {
-        
         money += changeNum;
         PlayerResources.UseEssences(-changeNum);
         moneyText.text = "$ " + money;

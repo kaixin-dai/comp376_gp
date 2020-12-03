@@ -19,13 +19,8 @@ public class Health : MonoBehaviour
         healthBar.SetMaxHealth(mMaxHealth);
     }
 
-    // TEMPORARY
     void Update() 
     {
-        if (Input.GetKeyDown(KeyCode.Space)) 
-        {
-            TakeDamage(20);
-        }
     }
 
     public void TakeDamage(int damage){
