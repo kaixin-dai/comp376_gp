@@ -8,6 +8,7 @@ public class PlayerResources : MonoBehaviour
     // Start is called before the first frame update
 
     public static int mNumOfEssences = 1000;
+    public GameObject essenceDisplay;
 
     void Start()
     {
@@ -16,7 +17,7 @@ public class PlayerResources : MonoBehaviour
 
     public void Update()
     {
-/*        GameObject.Find("EssenceAmount").GetComponent<Text>().text = mNumOfEssences.ToString();*/
+        essenceDisplay.GetComponent<Text>().text = mNumOfEssences.ToString();
     }
 
     public void AddEssences(int num)

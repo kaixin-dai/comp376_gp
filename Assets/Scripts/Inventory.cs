@@ -102,6 +102,68 @@ public class Inventory : MonoBehaviour
         mapPanel.gameObject.SetActive(true);
     }
 
+    // Turret buttons
+
+    public void Gunner1() 
+    {
+        GameObject.Find("GameFlow").GetComponent<GameFlow>().ResumeGame();
+        GameObject.Find("BuildManager").GetComponent<BuildManager>().selectGunner(1);
+    }
+    public void Gunner2()
+    {
+        GameObject.Find("GameFlow").GetComponent<GameFlow>().ResumeGame();
+        GameObject.Find("BuildManager").GetComponent<BuildManager>().selectGunner(2);
+    }
+    public void Gunner3()
+    {
+        GameObject.Find("GameFlow").GetComponent<GameFlow>().ResumeGame();
+        GameObject.Find("BuildManager").GetComponent<BuildManager>().selectGunner(3);
+    }
+    public void Laser1()
+    {
+        GameObject.Find("GameFlow").GetComponent<GameFlow>().ResumeGame();
+        GameObject.Find("BuildManager").GetComponent<BuildManager>().selectLaser(1);
+    }
+    public void Laser2()
+    {
+        GameObject.Find("GameFlow").GetComponent<GameFlow>().ResumeGame();
+        GameObject.Find("BuildManager").GetComponent<BuildManager>().selectLaser(2);
+    }
+    public void Laser3()
+    {
+        GameObject.Find("GameFlow").GetComponent<GameFlow>().ResumeGame();
+        GameObject.Find("BuildManager").GetComponent<BuildManager>().selectLaser(3);
+    }
+    public void Rocket1()
+    {
+        GameObject.Find("GameFlow").GetComponent<GameFlow>().ResumeGame();
+        GameObject.Find("BuildManager").GetComponent<BuildManager>().selectRocket(1);
+    }
+    public void Rocket2()
+    {
+        GameObject.Find("GameFlow").GetComponent<GameFlow>().ResumeGame();
+        GameObject.Find("BuildManager").GetComponent<BuildManager>().selectRocket(2);
+    }
+    public void Rocket3()
+    {
+        GameObject.Find("GameFlow").GetComponent<GameFlow>().ResumeGame();
+        GameObject.Find("BuildManager").GetComponent<BuildManager>().selectRocket(3);
+    }
+    public void Shock1()
+    {
+        GameObject.Find("GameFlow").GetComponent<GameFlow>().ResumeGame();
+        GameObject.Find("BuildManager").GetComponent<BuildManager>().selectShock(1);
+    }
+    public void Shock2()
+    {
+        GameObject.Find("GameFlow").GetComponent<GameFlow>().ResumeGame();
+        GameObject.Find("BuildManager").GetComponent<BuildManager>().selectShock(2);
+    }
+    public void Shock3()
+    {
+        GameObject.Find("GameFlow").GetComponent<GameFlow>().ResumeGame();
+        GameObject.Find("BuildManager").GetComponent<BuildManager>().selectShock(3);
+    }
     // Start is called before the first frame update
     void Start()
     {

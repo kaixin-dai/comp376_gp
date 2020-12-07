@@ -16,6 +16,7 @@ public class GameFlow : MonoBehaviour
     public GameObject inventory;
     public GameObject HUD;
     public GameObject essenceHUD;
+    public GameObject buildManager;
 
     private bool paused;
 
@@ -56,7 +57,7 @@ public class GameFlow : MonoBehaviour
 
     }
 
-    void PauseGame()
+    public void PauseGame()
     {
         paused = true;
         print("Game Paused");
@@ -65,9 +66,10 @@ public class GameFlow : MonoBehaviour
 
         inventory.SetActive(true);
         HUD.SetActive(false);
+        buildManager.SetActive(false);
 /*        essenceHUD.SetActive(true);*/
     }
-    void ResumeGame()
+    public void ResumeGame()
     {
         paused = false;
         print("Game Resumed");
@@ -76,7 +78,8 @@ public class GameFlow : MonoBehaviour
 
         inventory.SetActive(false);
         HUD.SetActive(true);
-/*        essenceHUD.SetActive(true);*/
+        buildManager.SetActive(true);
+        /*        essenceHUD.SetActive(true);*/
     }    
 }
 
