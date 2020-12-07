@@ -12,21 +12,34 @@ public class GameFlow : MonoBehaviour
     int mSpwanNumber = 5;
     [SerializeField]
     GameObject mBugReference;
+
+    public GameObject inventory;
+    public GameObject HUD;
+    public GameObject essenceHUD;
+
+    private bool paused;
+
     // Start is called before the first frame update
     void Start()
     {
+        ResumeGame();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape)) 
+
+        // Pause menu
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            SceneManager.LoadScene("Inventory");
+            if (!paused)
+                PauseGame();
+            else
+                ResumeGame();
         }
 
 
-        if(Input.GetKeyDown(KeyCode.M))
+        if (Input.GetKeyDown(KeyCode.M))
         {
             for(int i = - 2 ; i < mSpwanNumber - 2 ; i++)
             {
@@ -42,5 +55,28 @@ public class GameFlow : MonoBehaviour
         }
 
     }
+
+    void PauseGame()
+    {
+        paused = true;
+        print("Game Paused");
+
+        Time.timeScale = 0;
+
+        inventory.SetActive(true);
+        HUD.SetActive(false);
+/*        essenceHUD.SetActive(true);*/
+    }
+    void ResumeGame()
+    {
+        paused = false;
+        print("Game Resumed");
+
+        Time.timeScale = 1;
+
+        inventory.SetActive(false);
+        HUD.SetActive(true);
+/*        essenceHUD.SetActive(true);*/
+    }    
 }
 

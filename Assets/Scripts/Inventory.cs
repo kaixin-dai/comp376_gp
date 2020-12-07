@@ -10,6 +10,10 @@ public class Inventory : MonoBehaviour
 
     public GameObject player;
 
+    public GameObject inventory;
+    public GameObject HUD;
+    public GameObject essenceHUD;
+
     public Button buildButton;
     public Button weaponButton;
     public Button mapButton;
@@ -105,18 +109,11 @@ public class Inventory : MonoBehaviour
         buildPanel.gameObject.SetActive(true);
         weaponPanel.gameObject.SetActive(false);
         mapPanel.gameObject.SetActive(false);
-
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            SceneManager.LoadScene("Demo");
-        }
-
     }
-
 }

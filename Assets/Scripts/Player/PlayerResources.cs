@@ -16,7 +16,7 @@ public class PlayerResources : MonoBehaviour
 
     public void Update()
     {
-        GameObject.Find("EssenceAmount").GetComponent<Text>().text = mNumOfEssences.ToString();
+/*        GameObject.Find("EssenceAmount").GetComponent<Text>().text = mNumOfEssences.ToString();*/
     }
 
     public void AddEssences(int num)
