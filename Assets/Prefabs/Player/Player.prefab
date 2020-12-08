@@ -5134,6 +5134,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mMaxHealth: 20
+  mCurrentHealth: 0
+  healthBar: {fileID: 0}
 --- !u!114 &1543436083646558343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5146,7 +5148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f52871be424da43f291d6dee26c4acc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mFireRate: 1
+  mFireRate: 1.5
   mDamage: 1
   mFirePoint: {fileID: 1543436083799740863}
   muzzleParticle: {fileID: 4426449655881104883}
@@ -5169,6 +5171,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   mAttackRate: 0.5
+  mDamage: 1
 --- !u!114 &1543436083646558338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5423,15 +5426,15 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 07a9eaaa6827843a89f062098f3d2cb9, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6acf3f29c109e4439950c8f6a85cb2b, type: 3}
---- !u!4 &1543436083486623070 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400054, guid: c6acf3f29c109e4439950c8f6a85cb2b,
-    type: 3}
-  m_PrefabInstance: {fileID: 1543436083486498792}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1543436083486623068 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400052, guid: c6acf3f29c109e4439950c8f6a85cb2b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1543436083486498792}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1543436083486623070 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400054, guid: c6acf3f29c109e4439950c8f6a85cb2b,
     type: 3}
   m_PrefabInstance: {fileID: 1543436083486498792}
   m_PrefabAsset: {fileID: 0}
