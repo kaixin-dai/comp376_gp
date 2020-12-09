@@ -12,9 +12,13 @@ public class Enemy : MonoBehaviour
     public float stunTime;
     bool isShocked = false;
     public bool isBug;
+
+
     private void Start()
     {
         hPBar = GetComponent<Health>().getMaxHealth();
+
+
     }
     public void Update()
     {

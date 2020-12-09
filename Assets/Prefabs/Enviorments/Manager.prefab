@@ -58,3 +58,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efc7b027d7f3e48528fb6e2eb342de87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameOverPanel: {fileID: 0}
+  GameWonPanel: {fileID: 0}
+  WinningDay: 5
