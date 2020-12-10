@@ -117,6 +117,7 @@ public class Gun : MonoBehaviour
 
     public void Reset()
     {
+        GameManager.OnEndCrazyMode();
         IsEnpowered = false;
         mDamage = OriginalDamage;
         mFireRate = OriginalFireRate;
@@ -125,12 +126,15 @@ public class Gun : MonoBehaviour
 
     public void Enpower()
     {
+        GameManager.OnCrazyMode();
         IsEnpowered = true;
         GetComponent<PlayerMovement>().Enpower();
         mDamage = mDamage * 2;
         mFireRate = mFireRate / 2;
         
     }
+
+    
 
 
     

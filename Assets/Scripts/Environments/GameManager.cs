@@ -18,7 +18,12 @@ public class GameManager : MonoBehaviour
 
     public static Del OnGameWon;
 
+    public static Del OnCrazyMode;
+    public static Del OnEndCrazyMode;
+
     public static int dayCounter = 1;
+
+
 
     public GameObject GameOverPanel;
     public GameObject GameWonPanel;
@@ -28,6 +33,7 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {  
+
         GameOverPanel = GameObject.Find("GameOver");
         GameWonPanel = GameObject.Find("GameWon");
         GameManager.OnStartGame += GameOverPanelOff;
@@ -40,6 +46,8 @@ public class GameManager : MonoBehaviour
         GameManager.OnGameWon += Reset;
         GameManager.OnShipDestoryed += PauseGame;
         GameManager.OnGameWon += PauseGame;
+        
+
         
 
     }
@@ -101,6 +109,7 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 0f;
     }
+
 
 
 

@@ -11,7 +11,13 @@ public class Health : MonoBehaviour
     int mCurrentHealth;
     
     GameObject DamagePrompt;
+
+    
     Text DamagePromptText;
+
+    public GameObject EssenceReference;
+    public GameObject PowerUpReference;
+    public GameObject HealthReference;
     // Start is called before the first frame update
 
     void Start(){
@@ -29,7 +35,6 @@ public class Health : MonoBehaviour
 
         if(mCurrentHealth <= 0)
         {
-
                 Die();
 
 
@@ -43,6 +48,12 @@ public class Health : MonoBehaviour
 
         if(name =="Ship"){
             GameManager.OnShipDestoryed();
+        }
+
+        if(gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        {
+            print("enmey died");
+            DropResources();
         }
         Destroy(gameObject);
     }
@@ -68,5 +79,40 @@ public class Health : MonoBehaviour
     public int getMaxHealth()
     {
         return mMaxHealth;
+    }
+
+    public void DropResources()
+    {
+        float selector = Random.Range(0.0f,10.0f);
+        if(selector <= 3.0f)
+        {
+            DropPowerUp();
+        }
+
+        if(selector >3.0f && selector <= 6.0f)
+        {
+            DropHealth();
+        }
+
+        if(selector > 6.0f && selector <=10.0f)
+        {
+            DropEssence();
+        }
+
+    }
+
+    void DropPowerUp()
+    {
+        Instantiate(PowerUpReference, transform.position, Quaternion.identity);
+    }
+
+    void DropHealth()
+    {
+        Instantiate(HealthReference, transform.position, Quaternion.identity);
+    }
+
+    void DropEssence()
+    {
+        Instantiate(EssenceReference, transform.position, Quaternion.identity);
     }
 }

@@ -9,6 +9,7 @@ public class PromptUI : MonoBehaviour
 
     public Text DayPrompt;
     public Text NightPrompt;
+    public Text CrazyMode;
 
     public GameObject GameOverPanel;
     public GameObject GameWonPanel;
@@ -21,6 +22,7 @@ public class PromptUI : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        CrazyMode = GameObject.Find("CrazyMode").GetComponent<Text>();
         GameOverPanel = GameObject.Find("GameOver");
         GameWonPanel = GameObject.Find("GameWon");
         EssenceAnimator = this.transform.Find("Essence Prompt").GetComponent<Animator>();
@@ -34,6 +36,8 @@ public class PromptUI : MonoBehaviour
         GameManager.OnNight += NightMessage;
         GameManager.OnShipDestoryed += GameOverMessage;
         GameManager.OnGameWon += GameWonMessage;
+        GameManager.OnCrazyMode += ActiveCrazyMode;
+        GameManager.OnEndCrazyMode += InActiveCrazyMode;
     }
     void Start()
     {
@@ -93,6 +97,22 @@ public class PromptUI : MonoBehaviour
     {
         print("to Main Menu");
     }
+
+    public void ActiveCrazyMode()
+    {
+        Color zm = CrazyMode.color;
+        zm.a = 1.0f;
+        CrazyMode.color = zm;
+    }
+
+    public void InActiveCrazyMode()
+    {
+        Color zm = CrazyMode.color;
+        zm.a = 0.0f;
+        CrazyMode.color = zm;
+    }
+
+
 
 
 
