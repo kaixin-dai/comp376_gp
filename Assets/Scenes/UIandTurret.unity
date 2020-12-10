@@ -256,35 +256,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3582347391707335205, guid: 31aabc63e40934249b26414bf87b1b18,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3582347391979992732, guid: 31aabc63e40934249b26414bf87b1b18,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3582347392107672591, guid: 31aabc63e40934249b26414bf87b1b18,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3582347392160065820, guid: 31aabc63e40934249b26414bf87b1b18,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3582347392404392364, guid: 31aabc63e40934249b26414bf87b1b18,
         type: 3}
       propertyPath: m_Name
       value: Terrain
-      objectReference: {fileID: 0}
-    - target: {fileID: 3582347392404392364, guid: 31aabc63e40934249b26414bf87b1b18,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3582347392404392369, guid: 31aabc63e40934249b26414bf87b1b18,
         type: 3}
@@ -339,11 +314,6 @@ PrefabInstance:
     - target: {fileID: 3582347392404392369, guid: 31aabc63e40934249b26414bf87b1b18,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3582347393635160502, guid: 31aabc63e40934249b26414bf87b1b18,
-        type: 3}
-      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
