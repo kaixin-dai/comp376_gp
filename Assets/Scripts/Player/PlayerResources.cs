@@ -18,7 +18,7 @@ public class PlayerResources : MonoBehaviour
 
     public void Update()
     {
-        essenceDisplay.GetComponent<TextMeshProUGUI>().text = mNumOfEssences.ToString();
+        essenceDisplay.GetComponent<Text>().text = mNumOfEssences.ToString();
     }
 
     public void AddEssences(int num)

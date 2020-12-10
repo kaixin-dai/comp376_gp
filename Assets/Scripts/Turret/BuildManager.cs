@@ -125,8 +125,8 @@ public class BuildManager : MonoBehaviour
                         else
                         {
                             //TODO notice player that no enough money e.g. make a alarm noice or floating text
-                            moneyAnimator.SetTrigger("TextAni");
-                            alarmAudio.AlarmSound();
+                            //moneyAnimator.SetTrigger("TextAni");
+                            //alarmAudio.AlarmSound();
                         }
                     }
                     //else if (mapCube.turretBuilding != null)   //here we should check if there is already a building
@@ -166,6 +166,10 @@ public class BuildManager : MonoBehaviour
                     if (previewBuild!=null)
                     {
                         previewBuild.transform.position = hit.point;
+                    }
+                    else
+                    {
+                        previewBuild = Instantiate(previewTD.previewPrefab, hit.point, Quaternion.identity);
                     }
                     
                 }
