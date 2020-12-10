@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerResources : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class PlayerResources : MonoBehaviour
 
     public void Update()
     {
-        essenceDisplay.GetComponent<Text>().text = mNumOfEssences.ToString();
+        essenceDisplay.GetComponent<TextMeshProUGUI>().text = mNumOfEssences.ToString();
     }
 
     public void AddEssences(int num)
