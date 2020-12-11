@@ -42,8 +42,10 @@ public class Health : MonoBehaviour
     }
 
     private void Die(){
-        if(name == "Player"){
-                //GameManager.OnPlayerDied();
+        if(tag == "Player"){
+
+            print("PLayer is dead");
+            GameManager.OnPlayerDied();
         }
 
         if(name =="Ship"){

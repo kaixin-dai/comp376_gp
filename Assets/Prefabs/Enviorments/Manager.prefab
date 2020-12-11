@@ -58,6 +58,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efc7b027d7f3e48528fb6e2eb342de87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerSpwanTime: 5
+  SapwnCounter: 0
   GameOverPanel: {fileID: 0}
   GameWonPanel: {fileID: 0}
+  PlayerReference: {fileID: 1543436083646558365, guid: 431e279fdd53f4bf9b46e2e9352098cd,
+    type: 3}
   WinningDay: 5

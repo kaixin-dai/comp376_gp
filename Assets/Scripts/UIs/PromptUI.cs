@@ -10,6 +10,7 @@ public class PromptUI : MonoBehaviour
     public Text DayPrompt;
     public Text NightPrompt;
     public Text CrazyMode;
+    public Text Responwe;
 
     public GameObject GameOverPanel;
     public GameObject GameWonPanel;
@@ -23,6 +24,7 @@ public class PromptUI : MonoBehaviour
     void Awake()
     {
         CrazyMode = GameObject.Find("CrazyMode").GetComponent<Text>();
+        Responwe = GameObject.Find("PlayerRespawnMessage").GetComponent<Text>();
         GameOverPanel = GameObject.Find("GameOver");
         GameWonPanel = GameObject.Find("GameWon");
         EssenceAnimator = this.transform.Find("Essence Prompt").GetComponent<Animator>();
@@ -38,6 +40,9 @@ public class PromptUI : MonoBehaviour
         GameManager.OnGameWon += GameWonMessage;
         GameManager.OnCrazyMode += ActiveCrazyMode;
         GameManager.OnEndCrazyMode += InActiveCrazyMode;
+        GameManager.OnPlayerDied += ActiveRespawe;
+        GameManager.OnPlayerSpawn += InActiveRespawe;
+
     }
     void Start()
     {
@@ -111,6 +116,24 @@ public class PromptUI : MonoBehaviour
         zm.a = 0.0f;
         CrazyMode.color = zm;
     }
+
+    public void ActiveRespawe()
+    {
+        Color zm = Responwe.color;
+        zm.a = 1.0f;
+        Responwe.color = zm;
+    }
+
+
+    public void InActiveRespawe()
+    {
+        Color zm = Responwe.color;
+        zm.a = 0.0f;
+        Responwe.color = zm;
+    }
+
+
+
 
 
 
