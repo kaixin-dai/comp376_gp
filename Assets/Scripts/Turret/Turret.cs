@@ -5,7 +5,7 @@ using UnityEngine;
 public class Turret : MonoBehaviour
 {
     public List<GameObject> enemys = new List<GameObject>();
-
+    public Transform partToRotateH;
 
     void OnTriggerEnter(Collider col)
     {
@@ -50,6 +50,7 @@ public class Turret : MonoBehaviour
     [Header("Use Laser")]
     public bool useLaser = false;
     public LineRenderer lineRenderer;
+    public ParticleSystem impactEffect;
     public int maxDamage = 30;
     private float laserTimer = 4f;
     private float laserSpeed = 0.2f;
@@ -68,7 +69,10 @@ public class Turret : MonoBehaviour
     //rotate speed
     void Start()
     {
-
+        if (impactEffect!=null)
+        {
+            if (impactEffect.isPlaying) impactEffect.Stop();
+        }
     }
 
     void Update()
@@ -88,6 +92,17 @@ public class Turret : MonoBehaviour
         {
             DefaultLockShoot();
         }
+        if (enemys.Count>0)
+        {
+            PhysicsLock();
+        }
+    }
+    public void PhysicsLock()
+    {
+        Vector3 dir = enemys[0].transform.position - transform.position;
+        Quaternion lookRotation = Quaternion.LookRotation(dir);
+        Vector3 rotation = lookRotation.eulerAngles;
+        partToRotateH.rotation = Quaternion.Euler(0f, rotation.y, 0f);
     }
     public void shockCheck()
     {
@@ -172,6 +187,7 @@ public class Turret : MonoBehaviour
                 enemys.RemoveAt(0);
                 lineRenderer.SetPosition(0, firePos.position);
                 lineRenderer.SetPosition(1, firePos.position);
+                if (impactEffect.isPlaying) impactEffect.Stop();
                 laserTimer = 4f;
                 return;
             }
@@ -179,6 +195,7 @@ public class Turret : MonoBehaviour
         }
         else
         {
+            if (impactEffect.isPlaying) impactEffect.Stop();
             lineRenderer.SetPosition(0, firePos.position);
             lineRenderer.SetPosition(1, firePos.position);
         }
@@ -190,9 +207,16 @@ public class Turret : MonoBehaviour
     {
         laserTimer -= Time.deltaTime;
         laserSpeedTimer -= Time.deltaTime;
+        if(!impactEffect.isPlaying) impactEffect.Play();
         lineRenderer.SetPosition(0, firePos.position);
-        lineRenderer.SetPosition(1, enemy.transform.position);
+        lineRenderer.SetPosition(1, enemy.transform.position+new Vector3(0f, 0.5f,0f));
+
+        Vector3 dir = firePos.position - enemy.transform.position;
+        impactEffect.transform.position = enemy.transform.position + new Vector3(0f, 0.5f, 0f) + dir.normalized * 0.5f;
+        impactEffect.transform.rotation = Quaternion.LookRotation(dir);
         
+
+
         if (laserSpeedTimer <= 0f)
         {
             laserSpeedTimer = laserSpeed;
@@ -221,6 +245,7 @@ public class Turret : MonoBehaviour
     {
         if (enemys.Count > 0)
         {
+            
             GameObject bullet = GameObject.Instantiate(ammoPrefab, firePos.position, firePos.rotation);
             bullet.GetComponent<Bullet>().SetTarget(enemys[0].transform);
         }

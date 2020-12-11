@@ -1626,6 +1626,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mMaxHealth: 2
+  mCurrentHealth: 0
+  healthBar: {fileID: 0}
 --- !u!65 &5957228758585264957
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1637,8 +1639,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.7815247, y: 4.8073483, z: 4.1002502}
-  m_Center: {x: -0.20368958, y: 2.4959936, z: 0.37705994}
+  m_Size: {x: 3.7815247, y: 4.87655, z: 4.1002502}
+  m_Center: {x: -0.2036896, y: 2.461411, z: 0.3770599}
 --- !u!114 &1422831009
 MonoBehaviour:
   m_ObjectHideFlags: 0

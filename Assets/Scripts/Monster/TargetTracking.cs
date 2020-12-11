@@ -67,7 +67,11 @@ public class TargetTracking : MonoBehaviour
     }
 
     void Update ()
-    {   
+    {
+        if (mTargetShip!=null&&mTargetPlayer!=null)
+        {
+
+        
         float distanceToShip = Vector3.Distance(mTargetShip.position, transform.position);
         float distanceToPlayer = Vector3.Distance(mTargetPlayer.position, transform.position);
 
@@ -123,6 +127,7 @@ public class TargetTracking : MonoBehaviour
         {
             StunResume();
             mAnimator.enabled = mAnimating;
+        }
         }
     }
 
