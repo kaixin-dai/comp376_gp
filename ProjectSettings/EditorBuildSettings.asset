@@ -11,4 +11,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Story/Intro.unity
     guid: eb52c0b13b5a420408c6f59f1e67c8a3
+  - enabled: 1
+    path: Assets/Scenes/Story/NovaRespon.unity
+    guid: 45458f234d4111849b6b3b92a3854f67
+  - enabled: 1
+    path: Assets/Scenes/Story/Arrive.unity
+    guid: 5d1e4541a08da3747a459e66c278af31
+  - enabled: 1
+    path: Assets/Scenes/Joy/World_Game.unity
+    guid: 2f5cf85ca938b4a6c96cedcfc4a7e32b
   m_configObjects: {}

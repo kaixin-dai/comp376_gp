@@ -153,6 +153,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
+  - {fileID: 539203502}
   - {fileID: 1394892891}
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -323,7 +324,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1394892891}
+  m_Father: {fileID: 38688543}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -816,6 +817,7 @@ GameObject:
   - component: {fileID: 896923541}
   - component: {fileID: 896923540}
   - component: {fileID: 896923539}
+  - component: {fileID: 896923542}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -888,6 +890,102 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &896923542
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 896923538}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: bf08537af44b8a743a05435a4c18addb, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &995414214
 GameObject:
   m_ObjectHideFlags: 0
@@ -933,11 +1031,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameText: {fileID: 587007758}
   dialogueText: {fileID: 1327749636}
-  nextscene:
-  - {fileID: 1394892890}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!1 &1187785010
 GameObject:
   m_ObjectHideFlags: 0
@@ -1368,7 +1461,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1394892891}
   m_Layer: 5
-  m_Name: Before
+  m_Name: message
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1385,11 +1478,10 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 539203502}
   - {fileID: 1748994431}
   - {fileID: 1747149603}
   m_Father: {fileID: 38688543}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1430,12 +1522,12 @@ RectTransform:
   - {fileID: 1327749635}
   - {fileID: 1848594060}
   m_Father: {fileID: 1394892891}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0.3, y: -160.7}
-  m_SizeDelta: {x: 1082.8221, y: 273.52087}
+  m_SizeDelta: {x: 1100, y: 275}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1747149604
 MonoBehaviour:
@@ -1510,7 +1602,7 @@ RectTransform:
   - {fileID: 782692929}
   - {fileID: 715597865}
   m_Father: {fileID: 1394892891}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1529,13 +1621,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 654717e7a3920c74cb77a53a7f454af9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue:
+  dialogues:
     name: 'To Nova:'
     sentences:
     - "Dear Nova, since our planet\u2019s resources are dying, we are hiring you
-      to explore a not yet discovered planet M78."
-    - This planet is extremely dangerous!!! No one can survive from that. We only
-      have some messages that are sent back from the crews before they disappear.
+      to explore a not yet discovered planet M78"
+    - this planet is extremely dangerous!!! No one can survive from that. We only
+      have some messages that are sent back from the crews before they disappear
     - "All of them are showing there are great resources on that planet. We will
       pay you a non-refusable price. Of course, if you can survive\u2026."
 --- !u!114 &1748994433

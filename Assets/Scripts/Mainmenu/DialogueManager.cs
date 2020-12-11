@@ -9,8 +9,6 @@ public class DialogueManager : MonoBehaviour
     public Text nameText;
     public Text dialogueText;
 
-    public GameObject[] nextscene;
-
     private Queue<string> sentences;
 
     // Start is called before the first frame update
@@ -39,7 +37,6 @@ public class DialogueManager : MonoBehaviour
             EndDialogue();
             return;
         }
-
         string sentence = sentences.Dequeue();
         StopAllCoroutines();
         StartCoroutine(TypeSentence(sentence));
@@ -55,11 +52,11 @@ public class DialogueManager : MonoBehaviour
             yield return null;
         }
     }
-
-
     void EndDialogue()
     {
         Debug.Log("End of conversation.");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
+
+
 }
