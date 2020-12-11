@@ -21,7 +21,11 @@ public class Health : MonoBehaviour
 
         DamagePrompt = GameObject.Find("Damage Prompt");
         DamagePromptText = DamagePrompt.GetComponent<Text>();
-        healthBar.SetMaxHealth(mMaxHealth);
+        if(tag == "Player")
+        {
+            healthBar.SetMaxHealth(mMaxHealth);
+        }
+
     }
 
     void Update()
@@ -35,7 +39,6 @@ public class Health : MonoBehaviour
         GameManager.OnTakeDamage();
         healthBar.SetHleath(mCurrentHealth);
         //print(gameObject.name + " health:" + mCurrentHealth);
-
         if(mCurrentHealth <= 0)
         {
 
