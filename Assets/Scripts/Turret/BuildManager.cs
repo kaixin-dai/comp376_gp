@@ -16,7 +16,7 @@ public class BuildManager : MonoBehaviour
     /*private bool turretSelected = false;*/
     private enum TURRETS { Gunner, Laser, Rocket, Shock, None }
     private TURRETS turretSelected;
-
+    public EventSystem eventSystem;
     public GameObject gunnerToggle;
     public GameObject rocketToggle;
     public GameObject laserToggle;
@@ -108,7 +108,7 @@ public class BuildManager : MonoBehaviour
             {   //building turret
                 Ray ray2 = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit2;
-                bool isCollider = Physics.Raycast(ray2, out hit2, 1000, LayerMask.GetMask("Ground"));
+                bool isCollider = Physics.Raycast(ray2, out hit2, 100000, LayerMask.GetMask("Ground"));
                 if (isCollider)
                 {
                     //
@@ -147,7 +147,7 @@ public class BuildManager : MonoBehaviour
                     Destroy(previewBuild);
                 }
 
-                if (Physics.Raycast(ray, out hit, 100, LayerMask.GetMask("Ground")))
+                if (Physics.Raycast(ray, out hit, 100000, LayerMask.GetMask("Ground")))
                 {
                         previewBuild = Instantiate(previewTD.previewPrefab, hit.point, Quaternion.identity);
                 }
@@ -161,7 +161,7 @@ public class BuildManager : MonoBehaviour
             //}
             else
             {
-                if (Physics.Raycast(ray, out hit, 100, LayerMask.GetMask("Ground")))
+                if (Physics.Raycast(ray, out hit, 100000, LayerMask.GetMask("Ground")))
                 {
                     if (previewBuild!=null)
                     {
@@ -346,7 +346,7 @@ public class BuildManager : MonoBehaviour
     public void BuildTurret(GameObject turretPrefab)
     {
         
-        if (Physics.Raycast(ray, out hit, 100, LayerMask.GetMask("Ground")))
+        if (Physics.Raycast(ray, out hit, 100000, LayerMask.GetMask("Ground")))
         {
             Debug.Log("we hit " + hit.collider.name + " " + hit.point);
 
