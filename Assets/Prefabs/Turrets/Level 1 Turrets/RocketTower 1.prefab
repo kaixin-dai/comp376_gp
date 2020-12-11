@@ -370,7 +370,7 @@ GameObject:
   - component: {fileID: 8265412947135786330}
   - component: {fileID: 1965499437035882266}
   m_Layer: 0
-  m_Name: RocketTower
+  m_Name: RocketTower 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
