@@ -10,18 +10,19 @@ public class Melee : MonoBehaviour
     Transform mAttackPoint;
 
     [SerializeField]
-    float mAttackRadius = 0.5f;
+    public float mAttackRadius = 0.5f;
 
     [SerializeField]
     LayerMask mEnemyLayer;
 
     [SerializeField]
     [Range(0.1f, 1.5f)]
-    float mAttackRate = 0.5f;
+    public float mAttackRate = 0.5f;
 
     float mAttackTimer;
 
-    int mDamage = 1;
+    [SerializeField]
+    public int mDamage = 1;
 
     // Start is called before the first frame update
     void Start()
