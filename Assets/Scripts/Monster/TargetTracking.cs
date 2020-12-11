@@ -93,10 +93,12 @@ public class TargetTracking : MonoBehaviour
         if(distanceToShip > distanceToPlayer)
         {
             SetTarget(mTargetPlayer);
+            mOffsetDistance = 8.0f;
         }
         else
         {
             SetTarget(mTargetShip);
+            mOffsetDistance = 20.0f;
         }
 
 

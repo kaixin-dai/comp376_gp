@@ -86,6 +86,10 @@ public class Health : MonoBehaviour
             print("enmey died");
             DropResources();
         }
+        if(tag == "Scatter")
+        {
+            DropPrize();
+        }
         Destroy(gameObject);
     }
 
@@ -145,6 +149,12 @@ public class Health : MonoBehaviour
     void DropEssence()
     {
         Instantiate(EssenceReference, transform.position, Quaternion.identity);
+    }
+
+    void DropPrize()
+    {
+        GameObject essence = Instantiate(EssenceReference, transform.position, Quaternion.identity);
+        essence.GetComponent<Essence>().SetAmount(300);
     }
 
 

@@ -4,12 +4,19 @@ using UnityEngine;
 
 public class RestoreHealth : MonoBehaviour
 {
+
+    public GameObject Ship;
+
+    void Start()
+    {
+        Ship = GameObject.Find("Ship");
+    }
  
     public void OnTriggerEnter(Collider collider)
     {
         if(collider.tag == "Player")
         {
-            collider.gameObject.GetComponent<Health>().ResetHealth();
+            Ship.GetComponent<Health>().ResetHealth();
             Destroy(gameObject);
         }
 

@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 051c49b81e1c548a7bac62c9a35e7b3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mAmount: 100
+  mAmount: 50
   mPlayer: {fileID: 0}
 --- !u!65 &2180359200322491827
 BoxCollider:

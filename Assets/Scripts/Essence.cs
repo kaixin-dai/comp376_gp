@@ -32,4 +32,9 @@ public class Essence : MonoBehaviour
         Destroy(this.gameObject);
     }
 
+    public void SetAmount(int amount)
+    {
+        mAmount = amount;
+    }
+
 }

@@ -1599,7 +1599,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5957228758585264952}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cfb9bc320731a417fa9c796af1ff9ee9, type: 3}
   m_Name: 
@@ -1607,12 +1607,12 @@ MonoBehaviour:
   mTargetPlayer: {fileID: 0}
   mTargetShip: {fileID: 0}
   mTarget: {fileID: 0}
-  mFollowSpeed: 3
-  mFollowRange: 100
+  mFollowSpeed: 8
+  mFollowRange: 40
   mRotateSmoothness: 3
   mDistance: 0
   mDamage: 1
-  mOffsetDistance: 35
+  mOffsetDistance: 8
 --- !u!114 &4412541677870178086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1625,7 +1625,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b38e3165e47174f2ba6df1854822ddb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMaxHealth: 2
+  mMaxHealth: 10
   mCurrentHealth: 0
   EssenceReference: {fileID: 2180359200322491820, guid: 6a1ba0a07bf7a43f2812a12ed6f2a132,
     type: 3}
@@ -1634,6 +1634,7 @@ MonoBehaviour:
   HealthReference: {fileID: 2815121752727654611, guid: d1cbc6578be5b4f42b4d44efa10ba161,
     type: 3}
   healthBar: {fileID: 0}
+  ShipHealthBar: {fileID: 0}
 --- !u!65 &5957228758585264957
 BoxCollider:
   m_ObjectHideFlags: 0
