@@ -6,10 +6,11 @@ using UnityEngine.UI;
 public class Health : MonoBehaviour
 {
     [SerializeField]
-    int mMaxHealth;
+    int mMaxHealth = 100;
 
+    [SerializeField]
     int mCurrentHealth;
-    
+
     GameObject DamagePrompt;
 
     
@@ -19,25 +20,53 @@ public class Health : MonoBehaviour
     public GameObject PowerUpReference;
     public GameObject HealthReference;
     // Start is called before the first frame update
+    public GameObject healthBar;
+    public GameObject ShipHealthBar;
 
+    // Start is called before the first frame update
     void Start(){
         mCurrentHealth = mMaxHealth;
 
         DamagePrompt = GameObject.Find("Damage Prompt");
         DamagePromptText = DamagePrompt.GetComponent<Text>();
+        healthBar = GameObject.Find("Player_HealthBar");
+        ShipHealthBar = GameObject.Find("Ship_HealthBar");
+
+
+        if(tag == "Player")
+        {
+            healthBar.GetComponent<HealthBar>().SetMaxHealth(mMaxHealth);
+        }
+
+        if(name == "Ship")
+        {
+            ShipHealthBar.GetComponent<HealthBar>().SetMaxHealth(mMaxHealth);
+        }
+
+    }
+
+    void Update()
+    {
     }
 
     public void TakeDamage(int damage){
         mCurrentHealth -= damage;
         print(gameObject.name + " health:" + mCurrentHealth);
         DamagePromptText.text = " - " + damage;
-        GameManager.OnTakeDamage();
+        if(tag == "Player")
+        {
+            GameManager.OnTakeDamage();
+            healthBar.GetComponent<HealthBar>().SetHleath(mCurrentHealth);
+        }
+        if(name == "Ship")
+        {
+            ShipHealthBar.GetComponent<HealthBar>().SetHleath(mCurrentHealth);
+        }
 
+        //print(gameObject.name + " health:" + mCurrentHealth);
         if(mCurrentHealth <= 0)
         {
                 Die();
-
-
         }
     }
 
@@ -117,4 +146,6 @@ public class Health : MonoBehaviour
     {
         Instantiate(EssenceReference, transform.position, Quaternion.identity);
     }
+
+
 }

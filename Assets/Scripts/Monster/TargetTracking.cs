@@ -72,7 +72,12 @@ public class TargetTracking : MonoBehaviour
     }
 
     void Update ()
-    {   
+    {
+        if (mTargetShip!=null&&mTargetPlayer!=null)
+        {
+
+        
+      
 
          float distanceToPlayer;
 
@@ -141,6 +146,7 @@ public class TargetTracking : MonoBehaviour
         {
             StunResume();
             mAnimator.enabled = mAnimating;
+        }
         }
     }
 

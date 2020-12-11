@@ -39,16 +39,21 @@ public class GameManager : MonoBehaviour
 
     public GameObject PlayerReference;
     public Text Responwe;
-    
 
-    
+    public GameObject inventory;
+    public GameObject HUD;
+    public GameObject essenceHUD;
+    public GameObject buildManager;
+
+    private bool paused;
+
 
     public int WinningDay = 7;
 
 
     void Awake()
-    {  
-
+    {
+        ResumeGame();
         GameOverPanel = GameObject.Find("GameOver");
         GameWonPanel = GameObject.Find("GameWon");
         GameManager.OnStartGame += GameOverPanelOff;
@@ -77,8 +82,17 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        
-        if(GameManager.dayCounter == WinningDay)
+
+        // Pause menu
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (!paused)
+                PauseGame();
+            else
+                ResumeGame();
+        }
+
+        if (GameManager.dayCounter == WinningDay)
 
         {
             print("call game won");
@@ -137,10 +151,10 @@ public class GameManager : MonoBehaviour
         GameWonPanel.SetActive(false);
     }
 
-    public void PauseGame()
+/*    public void PauseGame()
     {
         Time.timeScale = 0f;
-    }
+    }*/
 
     public void PlayerDied()
     {
@@ -158,7 +172,30 @@ public class GameManager : MonoBehaviour
         Responwe.text = "You Are Killed\n" + (int)SapwnCounter;
     }
 
+    public void PauseGame()
+    {
+        paused = true;
+        print("Game Paused");
 
+        Time.timeScale = 0;
+
+        inventory.SetActive(true);
+        HUD.SetActive(false);
+        buildManager.SetActive(false);
+        /*        essenceHUD.SetActive(true);*/
+    }
+    public void ResumeGame()
+    {
+        paused = false;
+        print("Game Resumed");
+
+        Time.timeScale = 1;
+
+        inventory.SetActive(false);
+        HUD.SetActive(true);
+        buildManager.SetActive(true);
+        /*        essenceHUD.SetActive(true);*/
+    }
 
 
 
