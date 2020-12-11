@@ -20,7 +20,8 @@ public class Health : MonoBehaviour
     public GameObject PowerUpReference;
     public GameObject HealthReference;
     // Start is called before the first frame update
-    public HealthBar healthBar;
+    public GameObject healthBar;
+    public GameObject ShipHealthBar;
 
     // Start is called before the first frame update
     void Start(){
@@ -28,9 +29,18 @@ public class Health : MonoBehaviour
 
         DamagePrompt = GameObject.Find("Damage Prompt");
         DamagePromptText = DamagePrompt.GetComponent<Text>();
+        healthBar = GameObject.Find("Player_HealthBar");
+        ShipHealthBar = GameObject.Find("Ship_HealthBar");
+
+
         if(tag == "Player")
         {
-            healthBar.SetMaxHealth(mMaxHealth);
+            healthBar.GetComponent<HealthBar>().SetMaxHealth(mMaxHealth);
+        }
+
+        if(name == "Ship")
+        {
+            ShipHealthBar.GetComponent<HealthBar>().SetMaxHealth(mMaxHealth);
         }
 
     }
@@ -43,14 +53,20 @@ public class Health : MonoBehaviour
         mCurrentHealth -= damage;
         print(gameObject.name + " health:" + mCurrentHealth);
         DamagePromptText.text = " - " + damage;
-        GameManager.OnTakeDamage();
-        healthBar.SetHleath(mCurrentHealth);
+        if(tag == "Player")
+        {
+            GameManager.OnTakeDamage();
+            healthBar.GetComponent<HealthBar>().SetHleath(mCurrentHealth);
+        }
+        if(name == "Ship")
+        {
+            ShipHealthBar.GetComponent<HealthBar>().SetHleath(mCurrentHealth);
+        }
+
         //print(gameObject.name + " health:" + mCurrentHealth);
         if(mCurrentHealth <= 0)
         {
                 Die();
-
-
         }
     }
 
@@ -130,4 +146,6 @@ public class Health : MonoBehaviour
     {
         Instantiate(EssenceReference, transform.position, Quaternion.identity);
     }
+
+
 }
