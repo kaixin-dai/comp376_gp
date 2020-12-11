@@ -6,10 +6,11 @@ using UnityEngine.UI;
 public class Health : MonoBehaviour
 {
     [SerializeField]
-    int mMaxHealth;
+    int mMaxHealth = 100;
 
+    [SerializeField]
     int mCurrentHealth;
-    
+
     GameObject DamagePrompt;
 
     
@@ -19,12 +20,23 @@ public class Health : MonoBehaviour
     public GameObject PowerUpReference;
     public GameObject HealthReference;
     // Start is called before the first frame update
+    public HealthBar healthBar;
 
+    // Start is called before the first frame update
     void Start(){
         mCurrentHealth = mMaxHealth;
 
         DamagePrompt = GameObject.Find("Damage Prompt");
         DamagePromptText = DamagePrompt.GetComponent<Text>();
+        if(tag == "Player")
+        {
+            healthBar.SetMaxHealth(mMaxHealth);
+        }
+
+    }
+
+    void Update()
+    {
     }
 
     public void TakeDamage(int damage){
@@ -32,7 +44,8 @@ public class Health : MonoBehaviour
         print(gameObject.name + " health:" + mCurrentHealth);
         DamagePromptText.text = " - " + damage;
         GameManager.OnTakeDamage();
-
+        healthBar.SetHleath(mCurrentHealth);
+        //print(gameObject.name + " health:" + mCurrentHealth);
         if(mCurrentHealth <= 0)
         {
                 Die();

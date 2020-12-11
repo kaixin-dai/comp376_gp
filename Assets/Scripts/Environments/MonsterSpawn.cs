@@ -60,7 +60,7 @@ public class MonsterSpawn : MonoBehaviour
 
                 bug = Instantiate(MonsterBugReference,point.position + (i * 5 * Vector3.right),Quaternion.identity);
                 bug.AddComponent<enemyWaypointsMove>();
-                bug.transform.localScale = new Vector3 (5.0f,5.0f,5.0f);
+                bug.transform.localScale = new Vector3 (2.0f,2.0f,2.0f);
                 
                 bug.GetComponent<enemyWaypointsMove>().mTarget = waypoints[point_index].transform;
                 bug.tag = "night";

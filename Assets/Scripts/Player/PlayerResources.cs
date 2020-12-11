@@ -1,18 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class PlayerResources : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    public int mNumOfEssences;
+    public static int mNumOfEssences = 1000;
+    public GameObject essenceDisplay;
 
     void Start()
     {
-        mNumOfEssences = 0;
+        mNumOfEssences = 1000;
     }
 
+    public void Update()
+    {
+        essenceDisplay.GetComponent<Text>().text = mNumOfEssences.ToString();
+    }
 
     public void AddEssences(int num)
     {
@@ -21,9 +28,14 @@ public class PlayerResources : MonoBehaviour
         mNumOfEssences += num;
     }
 
-    public void UseEssences(int num)
+    public static void UseEssences(int num)
     {
         mNumOfEssences -= num;
 
+    }
+
+    public static int GetEssence() 
+    {
+        return mNumOfEssences;
     }
 }
