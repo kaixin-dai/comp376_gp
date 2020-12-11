@@ -37,6 +37,8 @@ public class PlayerMovement : MonoBehaviour
 
     bool mIsGrounded;
 
+    float OriginalSpeed;
+
     
     // Start is called before the first frame update
     void Start()
@@ -47,6 +49,8 @@ public class PlayerMovement : MonoBehaviour
         mCamera = Camera.main;
 
         mCameraHeight = mCamera.transform.position.y - transform.position.y + mCameraOffset;
+
+        OriginalSpeed = mSpeed;
     }
 
     // Update is called once per frame
@@ -113,6 +117,16 @@ public class PlayerMovement : MonoBehaviour
         {
             mSpeed = 0;
         }
+    }
+
+    public void Enpower()
+    {
+        mSpeed = mSpeed * 2;
+    }
+
+    public void ResetSpeed()
+    {
+        mSpeed = OriginalSpeed;
     }
 
 

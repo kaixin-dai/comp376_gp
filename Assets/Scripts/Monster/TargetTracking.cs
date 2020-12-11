@@ -55,11 +55,16 @@ public class TargetTracking : MonoBehaviour
         mAnimator = GetComponentInChildren<Animator>();
 
         mTargetPlayer = GameObject.Find("Player").transform;
+        print(mTargetPlayer);
         mTargetShip = GameObject.Find("Ship").transform;
+        // mTargetPlayer = GameObject.Find("Player");
+        // mTargetShip = GameObject.Find("Ship");
 
         tempTarget = mTarget;
         mAnimating = true;
         mAnimator.enabled = mAnimating;
+
+        GameManager.OnPlayerSpawnLate += FindPlayer;
 
         // DamagePrompt = GameObject.Find("Damage Prompt");
         // DamagePromptText = DamagePrompt.GetComponent<Text>();
@@ -68,17 +73,30 @@ public class TargetTracking : MonoBehaviour
 
     void Update ()
     {   
+
+         float distanceToPlayer;
+
+        if(mTargetPlayer != null)
+        {
+            distanceToPlayer = Vector3.Distance(mTargetPlayer.position, transform.position);
+        }
+        else
+        {
+            distanceToPlayer = 999999.0f;
+        }
+
+
         float distanceToShip = Vector3.Distance(mTargetShip.position, transform.position);
-        float distanceToPlayer = Vector3.Distance(mTargetPlayer.position, transform.position);
+        
 
 
         if(distanceToShip > distanceToPlayer)
         {
-            mTarget = mTargetPlayer;
+            SetTarget(mTargetPlayer);
         }
         else
         {
-            mTarget = mTargetShip;
+            SetTarget(mTargetShip);
         }
 
 
@@ -180,5 +198,10 @@ public class TargetTracking : MonoBehaviour
     public void SetStun(bool inputBool)
     {
         isStun = inputBool;
+    }
+
+    public void FindPlayer()
+    {
+        mTargetPlayer = GameObject.FindWithTag("Player").transform;
     }
 }
