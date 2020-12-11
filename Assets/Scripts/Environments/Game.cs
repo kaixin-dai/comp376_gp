@@ -29,24 +29,21 @@ public class Game : MonoBehaviour
         //     return;
 
 
-        if(Input.GetKeyDown(KeyCode.M))
-        {
-            monsterSpawner.GetComponent<MonsterSpawn>().SpawnBug();
-        }
+        // if(Input.GetKeyDown(KeyCode.M))
+        // {
+        //     monsterSpawner.GetComponent<MonsterSpawn>().SpawnBug();
+        // }
 
-        if(Input.GetKeyDown(KeyCode.B))
-        {
-            teleport.GetComponent<Teleport>().ToBase();
-        }
 
-        if(Input.GetKeyDown(KeyCode.F))
-        {
-            GameManager.OnDay();
-        }
-        if(Input.GetKeyDown(KeyCode.G))
-        {
-            GameManager.OnNight();
-        }
+
+        // if(Input.GetKeyDown(KeyCode.F))
+        // {
+        //     GameManager.OnDay();
+        // }
+        // if(Input.GetKeyDown(KeyCode.G))
+        // {
+        //     GameManager.OnNight();
+        // }
     }
 
 

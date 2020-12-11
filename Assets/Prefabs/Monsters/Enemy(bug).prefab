@@ -1571,7 +1571,7 @@ GameObject:
   - component: {fileID: 1422831009}
   m_Layer: 8
   m_Name: Enemy(bug)
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1598,7 +1598,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5957228758585264952}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cfb9bc320731a417fa9c796af1ff9ee9, type: 3}
   m_Name: 
@@ -1606,12 +1606,12 @@ MonoBehaviour:
   mTargetPlayer: {fileID: 0}
   mTargetShip: {fileID: 0}
   mTarget: {fileID: 0}
-  mFollowSpeed: 3
-  mFollowRange: 100
+  mFollowSpeed: 8
+  mFollowRange: 40
   mRotateSmoothness: 3
   mDistance: 0
   mDamage: 1
-  mOffsetDistance: 35
+  mOffsetDistance: 8
 --- !u!114 &4412541677870178086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1624,7 +1624,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b38e3165e47174f2ba6df1854822ddb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMaxHealth: 2
+  mMaxHealth: 10
   mCurrentHealth: 0
   EssenceReference: {fileID: 0}
   PowerUpReference: {fileID: 0}
@@ -1642,8 +1642,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.7815247, y: 4.87655, z: 4.1002502}
-  m_Center: {x: -0.2036896, y: 2.461411, z: 0.3770599}
+  m_Size: {x: 3.7815247, y: 7.4184475, z: 4.1002502}
+  m_Center: {x: -0.20368958, y: 3.8015432, z: 0.37705994}
 --- !u!114 &1422831009
 MonoBehaviour:
   m_ObjectHideFlags: 0
