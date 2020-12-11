@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,18 +18,26 @@ public class CameraMovement : MonoBehaviour
 
         mPlayer = GameObject.Find("Player").transform;
         mCameraOffset = transform.position - mPlayer.position;
+        GameManager.OnPlayerSpawnLate += FollowPlayer;
     }
 
     // Update is called once per frame
     void LateUpdate()
+
     {
-        if(mPlayer!=null)
+        if(mPlayer != null)
         {
             Vector3 newPos = mPlayer.position + mCameraOffset;
 
-            transform.position = Vector3.Lerp(transform.position, newPos, mSmoothness * Time.deltaTime);
+            transform.position = Vector3.Lerp(transform.position,newPos, mSmoothness * Time.deltaTime);
         }
-        
+
+    }
+
+    public void FollowPlayer()
+    {
+        mPlayer = GameObject.FindWithTag("Player").transform;
+        transform.position = mPlayer.position + mCameraOffset;
     }
 
 }

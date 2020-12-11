@@ -38,7 +38,7 @@ public class MonsterSpawn : MonoBehaviour
         if(nightMode)
         {
             
-            if(GameObject.FindGameObjectsWithTag("night").Length == 0)
+            if(GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
             {   
                 
                 nightMode = false;
@@ -60,10 +60,10 @@ public class MonsterSpawn : MonoBehaviour
 
                 bug = Instantiate(MonsterBugReference,point.position + (i * 5 * Vector3.right),Quaternion.identity);
                 bug.AddComponent<enemyWaypointsMove>();
-                bug.transform.localScale = new Vector3 (5.0f,5.0f,5.0f);
+                bug.transform.localScale = new Vector3 (2.0f,2.0f,2.0f);
                 
                 bug.GetComponent<enemyWaypointsMove>().mTarget = waypoints[point_index].transform;
-                bug.tag = "night";
+                bug.tag = "Enemy";
             }
 
             point_index = point_index + 1;

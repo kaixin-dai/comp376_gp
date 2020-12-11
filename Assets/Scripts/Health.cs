@@ -12,8 +12,16 @@ public class Health : MonoBehaviour
     int mCurrentHealth;
 
     GameObject DamagePrompt;
+
+    
     Text DamagePromptText;
-    public HealthBar healthBar;
+
+    public GameObject EssenceReference;
+    public GameObject PowerUpReference;
+    public GameObject HealthReference;
+    // Start is called before the first frame update
+    public GameObject healthBar;
+    public GameObject ShipHealthBar;
 
     // Start is called before the first frame update
     void Start(){
@@ -21,7 +29,20 @@ public class Health : MonoBehaviour
 
         DamagePrompt = GameObject.Find("Damage Prompt");
         DamagePromptText = DamagePrompt.GetComponent<Text>();
-        healthBar.SetMaxHealth(mMaxHealth);
+        healthBar = GameObject.Find("Player_HealthBar");
+        ShipHealthBar = GameObject.Find("Ship_HealthBar");
+
+
+        if(tag == "Player")
+        {
+            healthBar.GetComponent<HealthBar>().SetMaxHealth(mMaxHealth);
+        }
+
+        if(name == "Ship")
+        {
+            ShipHealthBar.GetComponent<HealthBar>().SetMaxHealth(mMaxHealth);
+        }
+
     }
 
     void Update()
@@ -32,26 +53,38 @@ public class Health : MonoBehaviour
         mCurrentHealth -= damage;
         print(gameObject.name + " health:" + mCurrentHealth);
         DamagePromptText.text = " - " + damage;
-        GameManager.OnTakeDamage();
-        healthBar.SetHleath(mCurrentHealth);
-        //print(gameObject.name + " health:" + mCurrentHealth);
+        if(tag == "Player")
+        {
+            GameManager.OnTakeDamage();
+            healthBar.GetComponent<HealthBar>().SetHleath(mCurrentHealth);
+        }
+        if(name == "Ship")
+        {
+            ShipHealthBar.GetComponent<HealthBar>().SetHleath(mCurrentHealth);
+        }
 
+        //print(gameObject.name + " health:" + mCurrentHealth);
         if(mCurrentHealth <= 0)
         {
-
                 Die();
-
-
         }
     }
 
     private void Die(){
-        if(name == "Player"){
-                //GameManager.OnPlayerDied();
+        if(tag == "Player"){
+
+            print("PLayer is dead");
+            GameManager.OnPlayerDied();
         }
 
         if(name =="Ship"){
             GameManager.OnShipDestoryed();
+        }
+
+        if(gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        {
+            print("enmey died");
+            DropResources();
         }
         Destroy(gameObject);
     }
@@ -78,4 +111,41 @@ public class Health : MonoBehaviour
     {
         return mMaxHealth;
     }
+
+    public void DropResources()
+    {
+        float selector = Random.Range(0.0f,10.0f);
+        if(selector <= 3.0f)
+        {
+            DropPowerUp();
+        }
+
+        if(selector >3.0f && selector <= 6.0f)
+        {
+            DropHealth();
+        }
+
+        if(selector > 6.0f && selector <=10.0f)
+        {
+            DropEssence();
+        }
+
+    }
+
+    void DropPowerUp()
+    {
+        Instantiate(PowerUpReference, transform.position, Quaternion.identity);
+    }
+
+    void DropHealth()
+    {
+        Instantiate(HealthReference, transform.position, Quaternion.identity);
+    }
+
+    void DropEssence()
+    {
+        Instantiate(EssenceReference, transform.position, Quaternion.identity);
+    }
+
+
 }

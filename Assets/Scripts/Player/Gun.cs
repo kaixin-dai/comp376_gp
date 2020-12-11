@@ -23,9 +23,12 @@ public class Gun : MonoBehaviour
     [Range(8, 32)]
     int mEnemyLayer = 8;
 
+    public bool IsEnpowered;
+    float EnpowerCounter;
+    public float EnpowerDuration = 10.0f;
 
-
-    
+    int OriginalDamage;
+    float OriginalFireRate;
 
     float mFireTimer;
 
@@ -33,6 +36,8 @@ public class Gun : MonoBehaviour
     void Start()
     {
         mFireTimer = 0.0f;
+        OriginalDamage = mDamage;
+        OriginalFireRate = mFireRate;
     }
 
     // Update is called once per frame
@@ -46,6 +51,23 @@ public class Gun : MonoBehaviour
                 mFireTimer = 0.0f;
                 FireGun();
             }
+        }
+
+        if(IsEnpowered)
+        {
+            if(EnpowerCounter < EnpowerDuration)
+            {
+                EnpowerCounter += Time.deltaTime;
+
+            }
+            else
+            {
+                EnpowerCounter = 0.0f;
+                Reset();
+            }
+
+
+
         }
     }
 
@@ -83,12 +105,36 @@ public class Gun : MonoBehaviour
     public void IncreaseGunDamage(int dmg)
     {
         mDamage += dmg;
+        OriginalDamage = mDamage;
+        
     }
 
     public void IncreaseGunFireRate(float rate)
     {
         mFireRate -= rate;
+        OriginalFireRate = mFireRate;
     }
+
+    public void Reset()
+    {
+        GameManager.OnEndCrazyMode();
+        IsEnpowered = false;
+        mDamage = OriginalDamage;
+        mFireRate = OriginalFireRate;
+        GetComponent<PlayerMovement>().ResetSpeed();
+    }
+
+    public void Enpower()
+    {
+        GameManager.OnCrazyMode();
+        IsEnpowered = true;
+        GetComponent<PlayerMovement>().Enpower();
+        mDamage = mDamage * 2;
+        mFireRate = mFireRate / 2;
+        
+    }
+
+    
 
 
     

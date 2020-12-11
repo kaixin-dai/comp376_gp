@@ -9,6 +9,8 @@ public class PromptUI : MonoBehaviour
 
     public Text DayPrompt;
     public Text NightPrompt;
+    public Text CrazyMode;
+    public Text Responwe;
 
     public GameObject GameOverPanel;
     public GameObject GameWonPanel;
@@ -21,6 +23,8 @@ public class PromptUI : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        CrazyMode = GameObject.Find("CrazyMode").GetComponent<Text>();
+        Responwe = GameObject.Find("PlayerRespawnMessage").GetComponent<Text>();
         GameOverPanel = GameObject.Find("GameOver");
         GameWonPanel = GameObject.Find("GameWon");
         EssenceAnimator = this.transform.Find("Essence Prompt").GetComponent<Animator>();
@@ -34,6 +38,11 @@ public class PromptUI : MonoBehaviour
         GameManager.OnNight += NightMessage;
         GameManager.OnShipDestoryed += GameOverMessage;
         GameManager.OnGameWon += GameWonMessage;
+        GameManager.OnCrazyMode += ActiveCrazyMode;
+        GameManager.OnEndCrazyMode += InActiveCrazyMode;
+        GameManager.OnPlayerDied += ActiveRespawe;
+        GameManager.OnPlayerSpawn += InActiveRespawe;
+
     }
     void Start()
     {
@@ -93,6 +102,40 @@ public class PromptUI : MonoBehaviour
     {
         print("to Main Menu");
     }
+
+    public void ActiveCrazyMode()
+    {
+        Color zm = CrazyMode.color;
+        zm.a = 1.0f;
+        CrazyMode.color = zm;
+    }
+
+    public void InActiveCrazyMode()
+    {
+        Color zm = CrazyMode.color;
+        zm.a = 0.0f;
+        CrazyMode.color = zm;
+    }
+
+    public void ActiveRespawe()
+    {
+        Color zm = Responwe.color;
+        zm.a = 1.0f;
+        Responwe.color = zm;
+    }
+
+
+    public void InActiveRespawe()
+    {
+        Color zm = Responwe.color;
+        zm.a = 0.0f;
+        Responwe.color = zm;
+    }
+
+
+
+
+
 
 
 

@@ -5099,7 +5099,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db8f818ef84774ea18835c332095b3d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSpeed: 5
+  mSpeed: 20
   mTurningSpeed: 360
   mCameraOffset: 0
   mGravity: -9.8
@@ -5133,8 +5133,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b38e3165e47174f2ba6df1854822ddb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMaxHealth: 20
-  mCurrentHealth: 0
+  mMaxHealth: 2
+  EssenceReference: {fileID: 0}
+  PowerUpReference: {fileID: 0}
+  HealthReference: {fileID: 0}
   healthBar: {fileID: 0}
 --- !u!114 &1543436083646558343
 MonoBehaviour:
@@ -5153,6 +5155,8 @@ MonoBehaviour:
   mFirePoint: {fileID: 1543436083799740863}
   muzzleParticle: {fileID: 4426449655881104883}
   mEnemyLayer: 8
+  IsEnpowered: 0
+  EnpowerDuration: 10
 --- !u!114 &1543436083646558340
 MonoBehaviour:
   m_ObjectHideFlags: 0

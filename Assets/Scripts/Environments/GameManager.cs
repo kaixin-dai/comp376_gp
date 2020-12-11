@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,22 +13,47 @@ public class GameManager : MonoBehaviour
     //no used yet
     public static Del OnShipDestoryed;
     public static Del OnPlayerDied;
+    public static Del OnPlayerSpawn;
+    public static Del OnPlayerSpawnLate;
     // 
     public static Del OnPickUpEssence;
     public static Del OnTakeDamage;
 
     public static Del OnGameWon;
 
+    public static Del OnCrazyMode;
+    public static Del OnEndCrazyMode;
+
+
     public static int dayCounter = 1;
+    
+    bool playerDead;
+    public float PlayerSpwanTime = 5.0f;
+    public float SapwnCounter;
+
+
+
 
     public GameObject GameOverPanel;
     public GameObject GameWonPanel;
+
+    public GameObject PlayerReference;
+    public Text Responwe;
+
+    public GameObject inventory;
+    public GameObject HUD;
+    public GameObject essenceHUD;
+    public GameObject buildManager;
+
+    private bool paused;
+
 
     public int WinningDay = 7;
 
 
     void Awake()
-    {  
+    {
+        ResumeGame();
         GameOverPanel = GameObject.Find("GameOver");
         GameWonPanel = GameObject.Find("GameWon");
         GameManager.OnStartGame += GameOverPanelOff;
@@ -40,11 +66,15 @@ public class GameManager : MonoBehaviour
         GameManager.OnGameWon += Reset;
         GameManager.OnShipDestoryed += PauseGame;
         GameManager.OnGameWon += PauseGame;
+        GameManager.OnPlayerSpawn += InstantiatePlayer;
+        
+
         
 
     }
     void Start()
     {
+        Responwe = GameObject.Find("PlayerRespawnMessage").GetComponent<Text>();
         GameManager.OnStartGame();
         GameManager.OnDay();
     }
@@ -52,14 +82,42 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        
-        if(GameManager.dayCounter == WinningDay)
+
+        // Pause menu
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (!paused)
+                PauseGame();
+            else
+                ResumeGame();
+        }
+
+        if (GameManager.dayCounter == WinningDay)
 
         {
             print("call game won");
             GameManager.OnGameWon();
             // Time.timeScale = 0;
         }
+
+        if(playerDead)
+        {
+            if(SapwnCounter < PlayerSpwanTime)
+            {
+                UpdateSpwandCounter();
+                SapwnCounter += Time.deltaTime;
+            }
+            else
+            {
+                SapwnCounter = 0.0f;
+                playerDead = false;
+                GameManager.OnPlayerSpawn();
+                GameManager.OnPlayerSpawnLate();
+
+            }
+        }
+
+
     }
 
     public void IncreaseDayCounter()
@@ -76,10 +134,6 @@ public class GameManager : MonoBehaviour
         print("startGame");
     }
 
-    public void PlayerDied()
-    {
-        print("PlayerDied");
-    }
 
     public void Reset()
     {
@@ -97,9 +151,50 @@ public class GameManager : MonoBehaviour
         GameWonPanel.SetActive(false);
     }
 
-    public void PauseGame()
+/*    public void PauseGame()
     {
         Time.timeScale = 0f;
+    }*/
+
+    public void PlayerDied()
+    {
+        playerDead = true;
+    }
+
+    public void InstantiatePlayer()
+    {
+        print("player instantialed");
+        Instantiate(PlayerReference, new Vector3(21.6f,-17.7f,-21.1f), Quaternion.identity);
+    }
+
+    public void UpdateSpwandCounter()
+    {
+        Responwe.text = "You Are Killed\n" + (int)SapwnCounter;
+    }
+
+    public void PauseGame()
+    {
+        paused = true;
+        print("Game Paused");
+
+        Time.timeScale = 0;
+
+        inventory.SetActive(true);
+        HUD.SetActive(false);
+        buildManager.SetActive(false);
+        /*        essenceHUD.SetActive(true);*/
+    }
+    public void ResumeGame()
+    {
+        paused = false;
+        print("Game Resumed");
+
+        Time.timeScale = 1;
+
+        inventory.SetActive(false);
+        HUD.SetActive(true);
+        buildManager.SetActive(true);
+        /*        essenceHUD.SetActive(true);*/
     }
 
 

@@ -13,6 +13,7 @@ public class PlayerResources : MonoBehaviour
 
     void Start()
     {
+        essenceDisplay = GameObject.Find("EssenceAmount");
         mNumOfEssences = 1000;
     }
 
