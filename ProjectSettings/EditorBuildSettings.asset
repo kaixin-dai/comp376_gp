@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/UIDemo.unity
     guid: 3f8acec9e83606f478866a6c6428df5a
   - enabled: 1
-    path: Assets/Scenes/Joy/Mainmenu.unity
+    path: Assets/Scenes/Mainmenu.unity
     guid: 5f8c18fc059f79b4a9ef7064d5ccbd4e
   - enabled: 1
     path: Assets/Scenes/Joy/World_Game.unity
