@@ -1572,7 +1572,7 @@ GameObject:
   - component: {fileID: 1422831010}
   m_Layer: 8
   m_Name: Enemy(bug)
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
