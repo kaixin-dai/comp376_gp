@@ -15,7 +15,7 @@ public class enemyWaypointsMove : MonoBehaviour
     [SerializeField]
     float mRotateSmoothness = 10f;
 
-    public float speed = 30f;
+    public float speed = 60f;
     private Transform target;
     private int wavepointIndex = 0;
 

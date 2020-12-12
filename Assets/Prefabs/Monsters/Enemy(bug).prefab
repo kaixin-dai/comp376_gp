@@ -1607,7 +1607,7 @@ MonoBehaviour:
   mTargetShip: {fileID: 0}
   mTarget: {fileID: 0}
   mFollowSpeed: 8
-  mFollowRange: 40
+  mFollowRange: 3000
   mRotateSmoothness: 3
   mDistance: 0
   mDamage: 1
@@ -1626,9 +1626,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mMaxHealth: 10
   mCurrentHealth: 0
-  EssenceReference: {fileID: 0}
-  PowerUpReference: {fileID: 0}
-  HealthReference: {fileID: 0}
+  EssenceReference: {fileID: 2180359200322491820, guid: 6a1ba0a07bf7a43f2812a12ed6f2a132,
+    type: 3}
+  PowerUpReference: {fileID: 3058333486592746486, guid: 623dc381c392449f2a1edb603415a54d,
+    type: 3}
+  HealthReference: {fileID: 2815121752727654611, guid: d1cbc6578be5b4f42b4d44efa10ba161,
+    type: 3}
   healthBar: {fileID: 0}
   ShipHealthBar: {fileID: 0}
 --- !u!65 &5957228758585264957

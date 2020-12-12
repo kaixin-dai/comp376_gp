@@ -47,6 +47,12 @@ public class Teleport : MonoBehaviour
             ToNorth();
         }
 
+        if(Input.GetKeyDown(KeyCode.T))
+        {
+            GameManager.OnDay();
+            GameManager.OnDayAfter();
+        }
+
         
     }
 

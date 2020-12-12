@@ -12,6 +12,8 @@ public class MonsterSpawn : MonoBehaviour
     public GameObject waypointsTop;
 
     public GameObject[] waypoints = new GameObject[3];
+
+    public int BugModifiler = 5;
     
     public int numOfBug;
     bool nightMode;
@@ -43,6 +45,7 @@ public class MonsterSpawn : MonoBehaviour
                 
                 nightMode = false;
                 GameManager.OnDay();
+                GameManager.OnDayAfter();
             }
                 
         }
@@ -55,6 +58,7 @@ public class MonsterSpawn : MonoBehaviour
         foreach (Transform point in spawnPoints)
         {
             GameObject bug;
+            numOfBug = numOfBug + (GameManager.dayCounter - 1 ) * BugModifiler;
             for(int i = - numOfBug/2 ; i < numOfBug - numOfBug/2 ; i++)
             {
 
@@ -64,11 +68,12 @@ public class MonsterSpawn : MonoBehaviour
                 
                 bug.GetComponent<enemyWaypointsMove>().mTarget = waypoints[point_index].transform;
                 bug.tag = "Enemy";
+               
             }
 
             point_index = point_index + 1;
 
-                       
+            
         }
 
     }

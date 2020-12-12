@@ -140,7 +140,7 @@ Transform:
   m_GameObject: {fileID: 2798950161272726849}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 5768448658871700135}
   - {fileID: 9018238147246189123}
@@ -181,6 +181,7 @@ MonoBehaviour:
   secondFirePos: {fileID: 0}
   useLaser: 0
   lineRenderer: {fileID: 0}
+  impactEffect: {fileID: 0}
   maxDamage: 30
   useShock: 0
   shockDamage: 1

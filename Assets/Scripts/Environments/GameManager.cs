@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public delegate void Del();
     public static Del OnStartGame;
 	public static Del OnDay;
+    public static Del OnDayAfter;
     public static Del OnNight;
     //no used yet
     public static Del OnShipDestoryed;
@@ -25,7 +26,7 @@ public class GameManager : MonoBehaviour
     public static Del OnEndCrazyMode;
 
 
-    public static int dayCounter = 1;
+    public static int dayCounter = 0;
     
     bool playerDead;
     public float PlayerSpwanTime = 5.0f;
@@ -33,7 +34,7 @@ public class GameManager : MonoBehaviour
 
 
 
-
+    
     public GameObject GameOverPanel;
     public GameObject GameWonPanel;
 
@@ -77,6 +78,7 @@ public class GameManager : MonoBehaviour
         Responwe = GameObject.Find("PlayerRespawnMessage").GetComponent<Text>();
         GameManager.OnStartGame();
         GameManager.OnDay();
+        GameManager.OnDayAfter();
     }
 
 
@@ -120,10 +122,11 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void IncreaseDayCounter()
+    public static void IncreaseDayCounter()
     {
-        print("day");
+        
         dayCounter = dayCounter + 1;
+
     }
 
     public void Night(){
@@ -169,7 +172,7 @@ public class GameManager : MonoBehaviour
 
     public void UpdateSpwandCounter()
     {
-        Responwe.text = "You Are Killed\n" + (int)SapwnCounter;
+        Responwe.text = "You Are Killed\n" + (5 - (int)SapwnCounter);
     }
 
     public void PauseGame()

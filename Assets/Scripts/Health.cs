@@ -90,6 +90,8 @@ public class Health : MonoBehaviour
         {
             DropPrize();
         }
+
+
         Destroy(gameObject);
     }
 
@@ -119,17 +121,17 @@ public class Health : MonoBehaviour
     public void DropResources()
     {
         float selector = Random.Range(0.0f,10.0f);
-        if(selector <= 3.0f)
+        if(selector <= 1.0f)
         {
             DropPowerUp();
         }
 
-        if(selector >3.0f && selector <= 6.0f)
+        if(selector >1.0f && selector <= 2.0f)
         {
             DropHealth();
         }
 
-        if(selector > 6.0f && selector <=10.0f)
+        if(selector > 2.0f && selector <=3.0f)
         {
             DropEssence();
         }

@@ -103,7 +103,7 @@ public class TargetTracking : MonoBehaviour
         else
         {
             SetTarget(mTargetShip);
-            mOffsetDistance = 15.0f;
+            mOffsetDistance = 12.0f;
         }
 
 

@@ -34,7 +34,7 @@ public class PromptUI : MonoBehaviour
         
         GameManager.OnPickUpEssence += PickUpEssenceMessage;
         GameManager.OnTakeDamage += GetDamageMessage;
-        GameManager.OnDay += DayMessage;
+        GameManager.OnDayAfter += DayMessage;
         GameManager.OnNight += NightMessage;
         GameManager.OnShipDestoryed += GameOverMessage;
         GameManager.OnGameWon += GameWonMessage;
@@ -78,6 +78,7 @@ public class PromptUI : MonoBehaviour
 
     public void DayMessage()
     {
+        print(GameManager.dayCounter);
         DayPrompt.text = "DAY " + GameManager.dayCounter;
         DayAnimator.Play("popMessage");
     }
